@@ -1,0 +1,3 @@
+export const REFRESH_INTERVAL = 'REFRESH_INTERVAL'
+export const METRICS_INTERVAL = 'METRICS_INTERVAL'
+export const APP_NAME = 'APP_NAME'
