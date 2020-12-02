@@ -29,7 +29,7 @@ export abstract class BaseUpdater implements OnApplicationShutdown {
 
   abstract update(): Promise<void>
 
-  onApplicationShutdown(signal?: string) {
+  onApplicationShutdown(_signal?: string): void {
     this.stop()
   }
 }

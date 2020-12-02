@@ -1,18 +1,19 @@
-import { HttpModule } from '@nestjs/common'
+import { HttpModule, HttpService } from '@nestjs/common'
 import { Test, TestingModule } from '@nestjs/testing'
-import { AxiosError } from 'axios'
+import { of } from 'rxjs'
 import { UnleashClient } from './unleash-client'
 
 describe('UnleashClient', () => {
   let client: UnleashClient
+  let requestSpy: jest.SpyInstance
 
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         HttpModule.register({
-          baseURL: 'https://trac02.heise.de/api/v4/feature_flags/unleash/903',
+          baseURL: 'https://example.com/',
           headers: {
-            'UNLEASH-INSTANCEID': 'FIXME',
+            'UNLEASH-INSTANCEID': 'MY-INSTANCE-ID',
           },
         }),
       ],
@@ -20,26 +21,18 @@ describe('UnleashClient', () => {
     }).compile()
 
     client = module.get(UnleashClient)
+
+    requestSpy = jest
+      .spyOn(module.get(HttpService), 'request')
+      .mockImplementation()
   })
 
-  it('features()', async () => {
-    expect(await client.getFeatures()).toMatchSnapshot()
-  })
+  it('request()', async () => {
+    requestSpy.mockReturnValue(of({ data: { a: 'b' } }))
 
-  it('sendMetrics()', async () => {
-    try {
-      await client.sendMetrics()
-    } catch (error) {
-      console.log(error)
-    }
-  })
-
-  it.only('register()', async () => {
-    try {
-      await client.register()
-    } catch (error) {
-      console.log((error as AxiosError).code, error)
-      // console.log(error)
-    }
+    expect(await client.request({ method: 'GET', url: '/foo' })).toEqual({
+      a: 'b',
+    })
+    expect(requestSpy).toHaveBeenCalledWith({ method: 'GET', url: '/foo' })
   })
 })

@@ -18,11 +18,11 @@ export class UnleashRegisterClient {
     private readonly client: UnleashClient,
   ) {}
 
-  async register(metricsInterval: number, strategies: string[]): Promise<void> {
+  async register(interval: number, strategies: string[]): Promise<void> {
     const payload = {
       appName: this.clientOptions.appName,
       instanceId: this.clientOptions.instanceId,
-      interval: metricsInterval,
+      interval,
       sdkVersion: `${name}@${version}`,
       started: new Date().toISOString(),
       strategies,

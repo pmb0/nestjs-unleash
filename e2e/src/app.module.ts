@@ -11,7 +11,7 @@ import { UsersService } from './users.service'
       // url: 'http://127.0.0.1:3000/unleash',
       url: 'https://unleash.herokuapp.com/api/client',
       appName: 'my-app-name',
-      instanceId: (Math.round(Math.random() * 10000) + 1).toString(),
+      instanceId: process.pid.toString(),
       // refreshInterval: 15000,
       // metricsInterval: 3000,
       strategies: [MyCustomStrategy],

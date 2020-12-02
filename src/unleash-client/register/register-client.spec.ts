@@ -1,33 +1,66 @@
-import { HttpModule } from '@nestjs/common'
+import { HttpModule, HttpService } from '@nestjs/common'
 import { Test, TestingModule } from '@nestjs/testing'
-import { AxiosError } from 'axios'
+import { of } from 'rxjs'
+import { UnleashRegisterClient } from '..'
 import { UnleashClient } from '../unleash-client'
+import { UNLEASH_CLIENT_OPTIONS } from '../unleash-client.constants'
+
+const Date = global.Date
+
+// @ts-ignore
+global.Date = class extends Date {
+  constructor() {
+    super()
+    return new Date(1466424490000)
+  }
+}
 
 describe('UnleashClient', () => {
-  let client: UnleashClient
+  let client: UnleashRegisterClient
+  let requestSpy: jest.SpyInstance
 
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [
-        HttpModule.register({
-          baseURL: 'https://trac02.heise.de/api/v4/feature_flags/unleash/903',
-          headers: {
-            'UNLEASH-INSTANCEID': 'FIXME',
+      imports: [HttpModule],
+      providers: [
+        UnleashRegisterClient,
+        // HttpService,
+        UnleashClient,
+        {
+          provide: UNLEASH_CLIENT_OPTIONS,
+          useValue: {
+            baseUrl: 'https://example.com/',
+            instanceId: 'myId',
+            appName: 'myApp',
+            timeout: 3000,
           },
-        }),
+        },
       ],
-      providers: [UnleashClient],
     }).compile()
 
-    client = module.get(UnleashClient)
+    client = module.get(UnleashRegisterClient)
+
+    requestSpy = jest
+      .spyOn(module.get(HttpService), 'request')
+      .mockImplementation()
   })
 
-  it.only('register()', async () => {
-    try {
-      await client.register()
-    } catch (error) {
-      console.log((error as AxiosError).code, error)
-      // console.log(error)
-    }
+  it('register()', async () => {
+    requestSpy.mockReturnValue(of({}))
+
+    await client.register(1234, ['a', 'b'])
+
+    expect(requestSpy).toHaveBeenCalledWith({
+      data: {
+        appName: 'myApp',
+        instanceId: 'myId',
+        interval: 1234,
+        sdkVersion: 'nestjs-unleash@1.0.0',
+        started: '2016-06-20T12:08:10.000Z',
+        strategies: ['a', 'b'],
+      },
+      method: 'POST',
+      url: '/register',
+    })
   })
 })

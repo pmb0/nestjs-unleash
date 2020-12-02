@@ -57,7 +57,7 @@ export class MetricsUpdaterService extends BaseUpdater {
 
       this.metrics.flushAll()
     } catch (error) {
-      this.logger.warn(error.message)
+      this.logger.warn((error as Error).message)
     }
   }
 }
