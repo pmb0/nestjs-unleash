@@ -20,14 +20,13 @@ export interface FlexibleRolloutParameters {
 export class FlexibleRolloutStrategy implements UnleashStrategy {
   name = 'flexibleRollout'
 
-  constructor(private readonly context: UnleashContext) {}
-
   // eslint-disable-next-line complexity
   resolveStickiness(
     stickiness: UnleashStickiness | undefined,
+    context: UnleashContext,
   ): string | undefined {
-    const userId = this.context.getUserId()
-    const sessionId = this.context.getSessionId()
+    const userId = context.getUserId()
+    const sessionId = context.getSessionId()
 
     switch (stickiness) {
       case UnleashStickiness.userId:
@@ -42,11 +41,14 @@ export class FlexibleRolloutStrategy implements UnleashStrategy {
   }
 
   // eslint-disable-next-line complexity
-  isEnabled(parameters: FlexibleRolloutParameters): boolean {
+  isEnabled(
+    parameters: FlexibleRolloutParameters,
+    context: UnleashContext,
+  ): boolean {
     const groupId = parameters.groupId
     const percentage = Number(parameters.rollout)
     const stickiness = parameters.stickiness || UnleashStickiness.default
-    const stickinessId = this.resolveStickiness(stickiness)
+    const stickinessId = this.resolveStickiness(stickiness, context)
 
     if (!stickinessId) {
       return false

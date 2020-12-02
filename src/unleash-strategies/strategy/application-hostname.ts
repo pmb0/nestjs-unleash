@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { hostname as osHostname } from 'os'
+import { UnleashContext } from '../unleash.context'
 import { UnleashStrategy } from './strategy.interface'
 
 export interface HostnameParameters {
@@ -11,7 +12,7 @@ export class ApplicationHostnameStrategy implements UnleashStrategy {
   name = 'applicationHostname'
   hostname = osHostname()
 
-  isEnabled(parameters: HostnameParameters): boolean {
+  isEnabled(parameters: HostnameParameters, _context: UnleashContext): boolean {
     if (!parameters.hostNames) {
       return false
     }

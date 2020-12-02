@@ -1,5 +1,5 @@
 import { Injectable, Logger, Scope } from '@nestjs/common'
-import { UnleashStrategiesService } from '../unleash-strategies'
+import { UnleashContext, UnleashStrategiesService } from '../unleash-strategies'
 import { MetricsService } from './metrics.service'
 import { ToggleRepository } from './repository/toggle-repository'
 
@@ -11,6 +11,7 @@ export class UnleashService {
     private readonly toggles: ToggleRepository,
     private readonly strategies: UnleashStrategiesService,
     private readonly metrics: MetricsService,
+    private readonly context: UnleashContext,
   ) {}
 
   // eslint-disable-next-line sonarjs/cognitive-complexity
@@ -39,7 +40,7 @@ export class UnleashService {
       }
 
       try {
-        const isEnabled = strategy.isEnabled(data.parameters)
+        const isEnabled = strategy.isEnabled(data.parameters, this.context)
         if (isEnabled) {
           this.logger.debug(`Strategy "${data.name}" returned true`)
         }

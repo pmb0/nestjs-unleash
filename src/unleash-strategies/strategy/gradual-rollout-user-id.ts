@@ -12,10 +12,11 @@ export interface GradualRolloutUserIdParameters {
 export class GradualRolloutUserIdStrategy implements UnleashStrategy {
   name = 'gradualRolloutUserId'
 
-  constructor(private readonly context: UnleashContext) {}
-
-  isEnabled(parameters: GradualRolloutUserIdParameters): boolean {
-    const userId = this.context.getUserId()
+  isEnabled(
+    parameters: GradualRolloutUserIdParameters,
+    context: UnleashContext,
+  ): boolean {
+    const userId = context.getUserId()
 
     if (!userId) {
       return false

@@ -16,11 +16,12 @@ export interface RemoteAddressParameters {
 export class RemoteAddressStrategy implements UnleashStrategy {
   name = 'remoteAddress'
 
-  constructor(private readonly context: UnleashContext) {}
-
   // eslint-disable-next-line complexity, sonarjs/cognitive-complexity
-  isEnabled(parameters: RemoteAddressParameters): boolean {
-    const remoteAddress = this.context.getRemoteAddress()
+  isEnabled(
+    parameters: RemoteAddressParameters,
+    context: UnleashContext,
+  ): boolean {
+    const remoteAddress = context.getRemoteAddress()
 
     if (!parameters.IPs || !remoteAddress) {
       return false

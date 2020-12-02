@@ -32,7 +32,7 @@ export class UnleashStrategiesModule {
         ...strategies,
         { provide: 'CUSTOM_STRATEGIES', useValue: strategies },
       ],
-      exports: [UnleashStrategiesService],
+      exports: [UnleashStrategiesService, UnleashContext],
     }
   }
 }

@@ -10,10 +10,11 @@ export interface UserWithIdParameters {
 export class UserWithIdStrategy implements UnleashStrategy {
   name = 'userWithId'
 
-  constructor(private readonly context: UnleashContext) {}
-
-  isEnabled(parameters: UserWithIdParameters): boolean {
-    const userId = this.context.getUserId()
+  isEnabled(
+    parameters: UserWithIdParameters,
+    context: UnleashContext,
+  ): boolean {
+    const userId = context.getUserId()
 
     if (!userId) {
       return false

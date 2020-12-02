@@ -6,6 +6,7 @@ export class MyCustomStrategy implements UnleashStrategy {
   name = 'MyCustomStrategy'
 
   isEnabled(_parameters: unknown): boolean {
-    return true
+    // eslint-disable-next-line no-magic-numbers
+    return Math.random() < 0.5
   }
 }
