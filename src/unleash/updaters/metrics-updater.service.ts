@@ -5,6 +5,7 @@ import {
   UnleashMetricsClient,
   UnleashRegisterClient,
 } from '../../unleash-client'
+import { UnleashStrategiesService } from '../../unleash-strategies'
 import { MetricsRepository } from '../repository/metrics-repository'
 import { BaseUpdater } from './base-updater'
 
@@ -17,7 +18,7 @@ export class MetricsUpdaterService extends BaseUpdater {
     protected readonly scheduler: SchedulerRegistry,
     private readonly metrics: MetricsRepository,
     private readonly metricsClient: UnleashMetricsClient,
-    // strategies: UnleashStrategiesService,
+    strategies: UnleashStrategiesService,
     registerClient: UnleashRegisterClient,
   ) {
     super()
@@ -25,8 +26,7 @@ export class MetricsUpdaterService extends BaseUpdater {
     void registerClient
       .register(
         interval,
-        // strategies.findAll().map((strategy) => strategy.name),
-        [],
+        strategies.findAll().map((strategy) => strategy.name),
       )
       .then(() => this.start())
       .catch((error) => {

@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common'
+import { Inject, Injectable, Logger } from '@nestjs/common'
 import { name, version } from '../../../package.json'
 import { UnleashClient } from '../unleash-client'
 import { UNLEASH_CLIENT_OPTIONS } from '../unleash-client.constants'
@@ -10,6 +10,8 @@ import {
 
 @Injectable()
 export class UnleashRegisterClient {
+  protected readonly logger = new Logger(UnleashRegisterClient.name)
+
   constructor(
     @Inject(UNLEASH_CLIENT_OPTIONS)
     private readonly clientOptions: UnleashClientModuleOptions,
@@ -17,16 +19,20 @@ export class UnleashRegisterClient {
   ) {}
 
   async register(metricsInterval: number, strategies: string[]): Promise<void> {
-    await this.client.post<
-      UnleashRegisterClientReponsePayload,
-      UnleashRegisterClientRequestPayload
-    >('/register', {
+    const payload = {
       appName: this.clientOptions.appName,
       instanceId: this.clientOptions.instanceId,
       interval: metricsInterval,
       sdkVersion: `${name}@${version}`,
       started: new Date().toISOString(),
       strategies,
-    })
+    }
+
+    this.logger.debug(payload)
+
+    await this.client.post<
+      UnleashRegisterClientReponsePayload,
+      UnleashRegisterClientRequestPayload
+    >('/register', payload)
   }
 }
