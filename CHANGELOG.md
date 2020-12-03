@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/pmb0/nestjs-unleash/compare/v1.0.1...v1.0.2) (2020-12-03)
+
+
+### Bug Fixes
+
+* add missing provider declaration ([c32b13d](https://github.com/pmb0/nestjs-unleash/commit/c32b13d6b607424820e56049a2f97dc12d5b299c))
+
 ## [1.0.1](https://github.com/pmb0/nestjs-unleash/compare/v1.0.0...v1.0.1) (2020-12-03)
 
 
