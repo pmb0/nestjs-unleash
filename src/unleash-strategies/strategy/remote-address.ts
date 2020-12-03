@@ -2,7 +2,7 @@
 /* eslint-disable max-depth */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 
-import { Injectable } from '@nestjs/common'
+import { Injectable, Logger } from '@nestjs/common'
 import * as ip from 'ip'
 import { isIP } from 'net'
 import { UnleashContext } from '../unleash.context'
@@ -15,6 +15,7 @@ export interface RemoteAddressParameters {
 @Injectable()
 export class RemoteAddressStrategy implements UnleashStrategy {
   name = 'remoteAddress'
+  protected readonly logger = new Logger(RemoteAddressStrategy.name)
 
   // eslint-disable-next-line complexity, sonarjs/cognitive-complexity
   isEnabled(
@@ -31,8 +32,12 @@ export class RemoteAddressStrategy implements UnleashStrategy {
       if (range === remoteAddress) {
         return true
       }
-      if (!isIP(range) && ip.cidrSubnet(range).contains(remoteAddress)) {
-        return true
+      try {
+        if (!isIP(range) && ip.cidrSubnet(range).contains(remoteAddress)) {
+          return true
+        }
+      } catch (error) {
+        this.logger.warn(error)
       }
     }
 
