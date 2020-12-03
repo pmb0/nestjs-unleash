@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/pmb0/nestjs-unleash/compare/v1.0.0...v1.0.1) (2020-12-03)
+
+
+### Bug Fixes
+
+* enable GradualRolloutUserIdStrategy and GradualRolloutSessionIdStrategy ([afb355a](https://github.com/pmb0/nestjs-unleash/commit/afb355adf0c8626b81dae77514bf78fd41a991d9))
+* ignore invalid CIDRs ([44e1f71](https://github.com/pmb0/nestjs-unleash/commit/44e1f7115d35ebaab5a46a1e0728abc9b5e311dd))
+
 # 1.0.0 (2020-12-02)
 
 
