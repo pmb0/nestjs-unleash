@@ -1,4 +1,4 @@
-import { UnleashContext } from '../unleash.context'
+import { UnleashContext } from '../../unleash'
 import { UnleashStrategy } from './strategy.interface'
 
 export class DefaultStrategy implements UnleashStrategy {

@@ -1,7 +1,8 @@
 import { Injectable, Logger, Scope } from '@nestjs/common'
-import { UnleashContext, UnleashStrategiesService } from '../unleash-strategies'
+import { UnleashStrategiesService } from '../unleash-strategies'
 import { MetricsService } from './metrics.service'
 import { ToggleRepository } from './repository/toggle-repository'
+import { UnleashContext } from './unleash.context'
 
 @Injectable({ scope: Scope.REQUEST })
 export class UnleashService {

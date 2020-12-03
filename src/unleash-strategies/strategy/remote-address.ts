@@ -5,7 +5,7 @@
 import { Injectable, Logger } from '@nestjs/common'
 import * as ip from 'ip'
 import { isIP } from 'net'
-import { UnleashContext } from '../unleash.context'
+import { UnleashContext } from '../../unleash'
 import { UnleashStrategy } from './strategy.interface'
 
 export interface RemoteAddressParameters {

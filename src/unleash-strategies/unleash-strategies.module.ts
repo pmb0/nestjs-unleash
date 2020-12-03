@@ -11,7 +11,6 @@ import {
 import { GradualRolloutRandomStrategy } from './strategy/gradual-rollout-random'
 import { GradualRolloutUserIdStrategy } from './strategy/gradual-rollout-user-id'
 import { UnleashStrategiesService } from './unleash-strategies.service'
-import { UnleashContext } from './unleash.context'
 
 export const CUSTOM_STRATEGIES = 'CUSTOM_STATEGIES'
 
@@ -21,7 +20,6 @@ export class UnleashStrategiesModule {
     return {
       module: UnleashStrategiesModule,
       providers: [
-        UnleashContext,
         UnleashStrategiesService,
         DefaultStrategy,
         ApplicationHostnameStrategy,
@@ -34,7 +32,7 @@ export class UnleashStrategiesModule {
         ...strategies,
         { provide: 'CUSTOM_STRATEGIES', useValue: strategies },
       ],
-      exports: [UnleashStrategiesService, UnleashContext],
+      exports: [UnleashStrategiesService],
     }
   }
 }

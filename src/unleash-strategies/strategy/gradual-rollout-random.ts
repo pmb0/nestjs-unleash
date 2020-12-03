@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { UnleashContext } from '../unleash.context'
+import { UnleashContext } from '../../unleash'
 import { randomGenerator } from '../util'
 import { UnleashStrategy } from './strategy.interface'
 

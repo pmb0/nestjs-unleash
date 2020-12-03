@@ -1,6 +1,11 @@
 import { DynamicModule, Module } from '@nestjs/common'
 import { ScheduleModule } from '@nestjs/schedule'
-import { METRICS_INTERVAL, REFRESH_INTERVAL, UnleashModuleOptions } from '.'
+import {
+  METRICS_INTERVAL,
+  REFRESH_INTERVAL,
+  UnleashContext,
+  UnleashModuleOptions,
+} from '.'
 import { UnleashClientModule, UnleashStrategiesModule } from '..'
 import { MetricsService } from './metrics.service'
 import { MetricsRepository } from './repository/metrics-repository'
@@ -42,6 +47,7 @@ export class UnleashModule {
         MetricsUpdaterService,
         ToggleRepository,
         TogglesUpdaterService,
+        UnleashContext,
         UnleashService,
       ],
       exports: [UnleashService, UnleashStrategiesModule],

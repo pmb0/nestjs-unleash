@@ -1,4 +1,4 @@
-import { UnleashContext } from '../unleash.context'
+import { UnleashContext } from '../../unleash'
 
 export interface UnleashStrategy {
   name: string

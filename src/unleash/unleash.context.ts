@@ -1,6 +1,6 @@
 import { Inject, Injectable, Scope } from '@nestjs/common'
 import { REQUEST } from '@nestjs/core'
-import { ExpressSession, FastifySession, Request } from '.'
+import { ExpressSession, FastifySession, Request } from '../unleash-strategies'
 
 @Injectable({ scope: Scope.REQUEST })
 export class UnleashContext {

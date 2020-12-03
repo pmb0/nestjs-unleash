@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { hostname as osHostname } from 'os'
-import { UnleashContext } from '../unleash.context'
+import { UnleashContext } from '../../unleash'
 import { UnleashStrategy } from './strategy.interface'
 
 export interface HostnameParameters {
