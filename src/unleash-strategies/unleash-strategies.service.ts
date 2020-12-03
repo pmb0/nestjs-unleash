@@ -5,10 +5,12 @@ import {
   DefaultStrategy,
   FlexibleRolloutStrategy,
   GradualRolloutRandomStrategy,
+  GradualRolloutSessionIdStrategy,
   RemoteAddressStrategy,
   UnleashStrategy,
   UserWithIdStrategy,
 } from './strategy'
+import { GradualRolloutUserIdStrategy } from './strategy/gradual-rollout-user-id'
 import { CUSTOM_STRATEGIES } from './unleash-strategies.constants'
 
 @Injectable()
@@ -22,6 +24,8 @@ export class UnleashStrategiesService {
     private readonly defaultStrategy: DefaultStrategy,
     private readonly flexibleRollout: FlexibleRolloutStrategy,
     private readonly gradualRolloutRandom: GradualRolloutRandomStrategy,
+    private readonly gradualRolloutUserId: GradualRolloutUserIdStrategy,
+    private readonly gradualRolloutSessionId: GradualRolloutSessionIdStrategy,
     @Inject(CUSTOM_STRATEGIES) strategies: Type<UnleashStrategy>[] = [],
     module: ModuleRef,
   ) {
@@ -32,6 +36,8 @@ export class UnleashStrategiesService {
       defaultStrategy,
       flexibleRollout,
       gradualRolloutRandom,
+      gradualRolloutUserId,
+      gradualRolloutSessionId,
       ...strategies.map((strategy) => module.get(strategy)),
     ]
   }
