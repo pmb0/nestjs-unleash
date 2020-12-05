@@ -9,7 +9,8 @@ export interface GradualRolloutUserIdParameters {
 }
 
 @Injectable()
-export class GradualRolloutUserIdStrategy implements UnleashStrategy {
+export class GradualRolloutUserIdStrategy
+  implements UnleashStrategy<GradualRolloutUserIdParameters> {
   name = 'gradualRolloutUserId'
 
   isEnabled(

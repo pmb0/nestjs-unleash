@@ -8,7 +8,8 @@ export interface GradualRolloutRandomParameters {
 }
 
 @Injectable()
-export class GradualRolloutRandomStrategy implements UnleashStrategy {
+export class GradualRolloutRandomStrategy
+  implements UnleashStrategy<GradualRolloutRandomParameters> {
   name = 'gradualRolloutRandom'
 
   isEnabled(

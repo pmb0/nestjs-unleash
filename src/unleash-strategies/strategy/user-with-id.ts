@@ -7,7 +7,8 @@ export interface UserWithIdParameters {
 }
 
 @Injectable()
-export class UserWithIdStrategy implements UnleashStrategy {
+export class UserWithIdStrategy
+  implements UnleashStrategy<UserWithIdParameters> {
   name = 'userWithId'
 
   isEnabled(

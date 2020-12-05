@@ -8,7 +8,8 @@ export interface HostnameParameters {
 }
 
 @Injectable()
-export class ApplicationHostnameStrategy implements UnleashStrategy {
+export class ApplicationHostnameStrategy
+  implements UnleashStrategy<HostnameParameters> {
   name = 'applicationHostname'
   hostname = osHostname()
 
