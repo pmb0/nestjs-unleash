@@ -121,7 +121,29 @@ NestJS-Unleash can be configured with the following options:
 
 ## Custom strategies
 
-In order to create a custom strategy you have to create a class wich inplements the `UnleashStrategy` interface. Example:
+In order to create a custom strategy you have to create a class wich inplements the `UnleashStrategy` interface:
+
+```ts
+import { UnleashContext } from "nestjs-unleash";
+
+export interface UnleashStrategy {
+  /**
+   * Must match the name you used to create the strategy in your Unleash
+   * server UI
+   */
+  name: string;
+
+  /**
+   * Determines whether the feature toggle is active
+   *
+   * @param parameters Custom paramemters as configured in Unleash server UI
+   * @param context applicaton/request context, i.e. UserID
+   */
+  isEnabled(parameters: unknown, context: UnleashContext): boolean;
+}
+```
+
+Example custom strategy:
 
 ```ts
 import { Injectable } from "@nestjs/common";
