@@ -31,7 +31,8 @@ export interface UnleashModuleOptions {
 
   /**
    * At which interval, in milliseconds, will this client update its feature
-   * state */
+   * state
+   */
   refreshInterval?: number
 
   /**

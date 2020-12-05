@@ -74,52 +74,54 @@ export class AppController {
 NestJS-Unleash can be configured with the following options:
 
 ```ts
-interface UnleashModuleOptions {
   /**
    * If "true", registers `UnleashModule` as a global module.
    * See: https://docs.nestjs.com/modules#global-modules
    *
    * @default true
    */
-  global?: boolean;
+  global?: boolean
 
   /**
    * URL of your Unleash server
    *
    * @example http://unleash.herokuapp.com/api/client
    */
-  url: string;
+  url: string
 
   /**
    * Name of the application seen by unleash-server
    */
-  appName: string;
+  appName: string
 
-  /** Instance id for this application (typically hostname, podId or similar) */
-  instanceId: string;
+  /**
+   * Instance id for this application (typically hostname, podId or similar)
+   */
+  instanceId: string
 
-  timeout?: number;
+  timeout?: number
 
   /**
    * At which interval, in milliseconds, will this client update its feature
-   * state */
-  refreshInterval?: number;
+   * state
+   */
+  refreshInterval?: number
 
   /**
    * At which interval, in milliseconds, will this client send metrics
    */
-  metricsInterval?: number;
+  metricsInterval?: number
 
   /**
    * Array of custom strategies. These classes mus implement the `UnleashStrategy` interface.
    */
-  strategies?: Type<UnleashStrategy>[];
+  strategies?: Type<UnleashStrategy>[]
 }
 ```
 
 ## Custom strategies
 
-In order to create a custom strategy you have to create a class wich inplements the `UnleashStrategy` strategy. Example:
+In order to create a custom strategy you have to create a class wich inplements the `UnleashStrategy` interface. Example:
 
 ```ts
 import { Injectable } from "@nestjs/common";
