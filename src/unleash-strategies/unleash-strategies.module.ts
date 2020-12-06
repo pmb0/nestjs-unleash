@@ -10,9 +10,8 @@ import {
 } from './strategy'
 import { GradualRolloutRandomStrategy } from './strategy/gradual-rollout-random'
 import { GradualRolloutUserIdStrategy } from './strategy/gradual-rollout-user-id'
+import { CUSTOM_STRATEGIES } from './unleash-strategies.constants'
 import { UnleashStrategiesService } from './unleash-strategies.service'
-
-export const CUSTOM_STRATEGIES = 'CUSTOM_STATEGIES'
 
 @Module({})
 export class UnleashStrategiesModule {
@@ -30,7 +29,7 @@ export class UnleashStrategiesModule {
         GradualRolloutSessionIdStrategy,
         GradualRolloutUserIdStrategy,
         ...strategies,
-        { provide: 'CUSTOM_STRATEGIES', useValue: strategies },
+        { provide: CUSTOM_STRATEGIES, useValue: strategies },
       ],
       exports: [UnleashStrategiesService],
     }
