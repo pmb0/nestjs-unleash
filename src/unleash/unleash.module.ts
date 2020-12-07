@@ -5,21 +5,27 @@ import {
   Module,
   OnModuleInit,
 } from '@nestjs/common'
+import { ModuleRef } from '@nestjs/core'
 import { ScheduleModule } from '@nestjs/schedule'
 import {
-  METRICS_INTERVAL,
-  REFRESH_INTERVAL,
   UnleashContext,
+  UnleashModuleAsyncOptions,
   UnleashModuleOptions,
 } from '.'
 import { UnleashClientModule, UnleashRegisterClient } from '../unleash-client'
 import {
   UnleashStrategiesModule,
+  UnleashStrategiesModuleOptions,
   UnleashStrategiesService,
 } from '../unleash-strategies'
 import { MetricsService } from './metrics.service'
 import { MetricsRepository } from './repository/metrics-repository'
 import { ToggleRepository } from './repository/toggle-repository'
+import {
+  METRICS_INTERVAL,
+  REFRESH_INTERVAL,
+  UNLEASH_MODULE_OPTIONS,
+} from './unleash.constants'
 import { UnleashService } from './unleash.service'
 import { MetricsUpdaterService } from './updaters/metrics-updater.service'
 import { TogglesUpdaterService } from './updaters/toggles-updater.service'
@@ -51,34 +57,48 @@ export class UnleashModule implements OnModuleInit {
     private readonly strategies: UnleashStrategiesService,
   ) {}
 
-  onModuleInit(): void {
-    void this.togglesUpdater.start()
+  async onModuleInit(): Promise<void> {
+    await this.togglesUpdater.start()
 
-    void this.registerClient
-      .register(
+    try {
+      await this.registerClient.register(
         this.metricsInterval,
         this.strategies.findAll().map((strategy) => strategy.name),
       )
-      .then(() => this.metricsUpdater.start())
-      .catch((error) => {
-        this.logger.error(error)
-      })
+      await this.metricsUpdater.start()
+    } catch (error) {
+      this.logger.error(error)
+    }
   }
 
   static forRoot(options: UnleashModuleOptions): DynamicModule {
+    const strategiesModule = UnleashStrategiesModule.registerAsync({
+      useFactory: (
+        options: UnleashModuleOptions,
+      ): UnleashStrategiesModuleOptions => ({
+        strategies: options.strategies ?? [],
+      }),
+      inject: [UNLEASH_MODULE_OPTIONS],
+    })
+    const clientModule = UnleashClientModule.registerAsync({
+      useFactory: (options: UnleashModuleOptions) => ({
+        baseURL: options.url,
+        appName: options.appName,
+        instanceId: options.instanceId,
+        timeout: options.timeout || DEFAULT_TIMEOUT,
+      }),
+      inject: [UNLEASH_MODULE_OPTIONS],
+    })
     return {
       global: options?.global ?? true,
       module: UnleashModule,
-      imports: [
-        UnleashClientModule.register({
-          baseURL: options.url,
-          appName: options.appName,
-          instanceId: options.instanceId,
-          timeout: options.timeout || DEFAULT_TIMEOUT,
-        }),
-        UnleashStrategiesModule.register(options.strategies),
-      ],
+      imports: [strategiesModule, clientModule],
+      exports: [clientModule, strategiesModule, UNLEASH_MODULE_OPTIONS],
       providers: [
+        {
+          provide: UNLEASH_MODULE_OPTIONS,
+          useValue: options,
+        },
         {
           provide: REFRESH_INTERVAL,
           useValue: options.refreshInterval ?? DEFAULT_INTERVAL,
@@ -86,6 +106,54 @@ export class UnleashModule implements OnModuleInit {
         {
           provide: METRICS_INTERVAL,
           useValue: options.metricsInterval ?? DEFAULT_INTERVAL,
+        },
+      ],
+    }
+  }
+
+  // eslint-disable-next-line complexity
+  static forRootAsync(options: UnleashModuleAsyncOptions): DynamicModule {
+    const strategiesModule = UnleashStrategiesModule.registerAsync({
+      // extraProviders: options.strategies,
+      useFactory: (
+        options: UnleashModuleOptions,
+      ): UnleashStrategiesModuleOptions => ({
+        strategies: options.strategies ?? [],
+      }),
+      inject: [UNLEASH_MODULE_OPTIONS, ModuleRef],
+    })
+    const clientModule = UnleashClientModule.registerAsync({
+      // eslint-disable-next-line sonarjs/no-identical-functions
+      useFactory: (options: UnleashModuleOptions) => ({
+        baseURL: options.url,
+        appName: options.appName,
+        instanceId: options.instanceId,
+        timeout: options.timeout || DEFAULT_TIMEOUT,
+      }),
+      inject: [UNLEASH_MODULE_OPTIONS],
+    })
+    return {
+      global: options?.global ?? true,
+      module: UnleashModule,
+      imports: [strategiesModule, clientModule],
+      exports: [clientModule, strategiesModule, UNLEASH_MODULE_OPTIONS],
+      providers: [
+        {
+          provide: UNLEASH_MODULE_OPTIONS,
+          useFactory: options.useFactory!,
+          inject: options.inject,
+        },
+        {
+          provide: REFRESH_INTERVAL,
+          useFactory: (options: UnleashModuleOptions) =>
+            options.refreshInterval ?? DEFAULT_INTERVAL,
+          inject: [UNLEASH_MODULE_OPTIONS],
+        },
+        {
+          provide: METRICS_INTERVAL,
+          useFactory: (options: UnleashModuleOptions) =>
+            options.metricsInterval ?? DEFAULT_INTERVAL,
+          inject: [UNLEASH_MODULE_OPTIONS],
         },
       ],
     }

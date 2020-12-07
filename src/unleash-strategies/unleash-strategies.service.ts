@@ -1,5 +1,6 @@
-import { Inject, Injectable, Type } from '@nestjs/common'
+import { Inject, Injectable, OnModuleInit } from '@nestjs/common'
 import { ModuleRef } from '@nestjs/core'
+import { UnleashStrategiesModuleOptions } from '.'
 import {
   ApplicationHostnameStrategy,
   DefaultStrategy,
@@ -14,7 +15,7 @@ import { GradualRolloutUserIdStrategy } from './strategy/gradual-rollout-user-id
 import { CUSTOM_STRATEGIES } from './unleash-strategies.constants'
 
 @Injectable()
-export class UnleashStrategiesService {
+export class UnleashStrategiesService implements OnModuleInit {
   private strategies: UnleashStrategy[]
 
   constructor(
@@ -26,8 +27,9 @@ export class UnleashStrategiesService {
     private readonly gradualRolloutRandom: GradualRolloutRandomStrategy,
     private readonly gradualRolloutUserId: GradualRolloutUserIdStrategy,
     private readonly gradualRolloutSessionId: GradualRolloutSessionIdStrategy,
-    @Inject(CUSTOM_STRATEGIES) strategies: Type<UnleashStrategy>[] = [],
-    module: ModuleRef,
+    @Inject(CUSTOM_STRATEGIES)
+    private readonly options: UnleashStrategiesModuleOptions,
+    private readonly moduleRef: ModuleRef,
   ) {
     this.strategies = [
       userWithId,
@@ -38,8 +40,14 @@ export class UnleashStrategiesService {
       gradualRolloutRandom,
       gradualRolloutUserId,
       gradualRolloutSessionId,
-      ...strategies.map((strategy) => module.get(strategy)),
+      // ...strategies.map((strategy) => module.get(strategy)),
     ]
+  }
+
+  async onModuleInit(): Promise<void> {
+    for (const customStrategy of this.options.strategies) {
+      this.strategies.push(await this.moduleRef.create(customStrategy))
+    }
   }
 
   findAll(): UnleashStrategy[] {
