@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/pmb0/nestjs-unleash/compare/v1.0.3...v1.0.4) (2020-12-07)
+
+
+### Bug Fixes
+
+* **register-client:** do not log line breaks ([b638602](https://github.com/pmb0/nestjs-unleash/commit/b63860209c7032999bf2e1465f70efe255ce0a5d))
+* **unleash-client:** baseUrl in log was always undefined ([5faf9b7](https://github.com/pmb0/nestjs-unleash/commit/5faf9b77c2887647cba6e30957a4eaa5ce15b64a))
+
 ## [1.0.3](https://github.com/pmb0/nestjs-unleash/compare/v1.0.2...v1.0.3) (2020-12-05)
 
 
