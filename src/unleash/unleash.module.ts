@@ -71,7 +71,6 @@ export class UnleashModule implements OnModuleInit {
     }
   }
 
-  // eslint-disable-next-line complexity
   static forRoot(options: UnleashModuleOptions): DynamicModule {
     const strategiesModule = UnleashStrategiesModule.registerAsync({
       useFactory: (
@@ -124,6 +123,7 @@ export class UnleashModule implements OnModuleInit {
       inject: [UNLEASH_MODULE_OPTIONS, ModuleRef],
     })
     const clientModule = UnleashClientModule.registerAsync({
+      // eslint-disable-next-line sonarjs/no-identical-functions
       useFactory: (options: UnleashModuleOptions) => ({
         baseURL: options.url,
         appName: options.appName,
