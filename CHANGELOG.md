@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/pmb0/nestjs-unleash/compare/v1.0.4...v1.1.0) (2020-12-07)
+
+
+### Features
+
+* add forRootAsync() ([aff1cb9](https://github.com/pmb0/nestjs-unleash/commit/aff1cb97bc5d268ac1f161583ec08e5923f576bf))
+
 ## [1.0.4](https://github.com/pmb0/nestjs-unleash/compare/v1.0.3...v1.0.4) (2020-12-07)
 
 
