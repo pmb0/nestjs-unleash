@@ -9,7 +9,7 @@ export class UnleashClient {
 
   async request<T = unknown>(config: AxiosRequestConfig): Promise<T> {
     const method = config.method ?? '(unknown method)'
-    const baseUrl = config.baseURL ?? '(unknown base url)'
+    const baseUrl = this.http.axiosRef.defaults.baseURL ?? '(unknown base url)'
     const url = config.url ?? '(unknown url)'
 
     this.logger.debug(`Request: ${method} ${baseUrl}${url}`)
