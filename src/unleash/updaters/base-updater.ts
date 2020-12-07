@@ -22,7 +22,7 @@ export abstract class BaseUpdater implements OnApplicationShutdown {
 
   stop(): void {
     if (this.timeout) {
-      this.logger.debug(`Stopping updater ...`)
+      this.logger.debug(`Stopping updater ${this.constructor.name} ...`)
       clearInterval(this.timeout)
     }
   }
