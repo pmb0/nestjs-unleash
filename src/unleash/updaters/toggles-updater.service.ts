@@ -16,8 +16,6 @@ export class TogglesUpdaterService extends BaseUpdater {
     private readonly toggles: ToggleRepository,
   ) {
     super()
-
-    void this.start()
   }
 
   isAxiosError(error: unknown): error is AxiosError {

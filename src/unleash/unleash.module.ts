@@ -1,4 +1,10 @@
-import { DynamicModule, Module } from '@nestjs/common'
+import {
+  DynamicModule,
+  Inject,
+  Logger,
+  Module,
+  OnModuleInit,
+} from '@nestjs/common'
 import { ScheduleModule } from '@nestjs/schedule'
 import {
   METRICS_INTERVAL,
@@ -6,7 +12,11 @@ import {
   UnleashContext,
   UnleashModuleOptions,
 } from '.'
-import { UnleashClientModule, UnleashStrategiesModule } from '..'
+import { UnleashClientModule, UnleashRegisterClient } from '../unleash-client'
+import {
+  UnleashStrategiesModule,
+  UnleashStrategiesService,
+} from '../unleash-strategies'
 import { MetricsService } from './metrics.service'
 import { MetricsRepository } from './repository/metrics-repository'
 import { ToggleRepository } from './repository/toggle-repository'
@@ -18,7 +28,31 @@ const DEFAULT_TIMEOUT = 1000
 const DEFAULT_INTERVAL = 15000
 
 @Module({})
-export class UnleashModule {
+export class UnleashModule implements OnModuleInit {
+  private readonly logger = new Logger(UnleashModule.name)
+
+  constructor(
+    private readonly togglesUpdater: TogglesUpdaterService,
+    private readonly metricsUpdater: MetricsUpdaterService,
+    private readonly registerClient: UnleashRegisterClient,
+    @Inject(METRICS_INTERVAL) private readonly metricsInterval: number,
+    private readonly strategies: UnleashStrategiesService,
+  ) {}
+
+  onModuleInit(): void {
+    void this.togglesUpdater.start()
+
+    void this.registerClient
+      .register(
+        this.metricsInterval,
+        this.strategies.findAll().map((strategy) => strategy.name),
+      )
+      .then(() => this.metricsUpdater.start())
+      .catch((error) => {
+        this.logger.error(error)
+      })
+  }
+
   static forRoot(options: UnleashModuleOptions): DynamicModule {
     return {
       global: options?.global ?? true,

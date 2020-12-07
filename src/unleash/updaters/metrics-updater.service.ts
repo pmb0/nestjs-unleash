@@ -1,11 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { SchedulerRegistry } from '@nestjs/schedule'
 import { METRICS_INTERVAL } from '..'
-import {
-  UnleashMetricsClient,
-  UnleashRegisterClient,
-} from '../../unleash-client'
-import { UnleashStrategiesService } from '../../unleash-strategies'
+import { UnleashMetricsClient } from '../../unleash-client'
 import { MetricsRepository } from '../repository/metrics-repository'
 import { BaseUpdater } from './base-updater'
 
@@ -18,20 +14,8 @@ export class MetricsUpdaterService extends BaseUpdater {
     protected readonly scheduler: SchedulerRegistry,
     private readonly metrics: MetricsRepository,
     private readonly metricsClient: UnleashMetricsClient,
-    strategies: UnleashStrategiesService,
-    registerClient: UnleashRegisterClient,
   ) {
     super()
-
-    void registerClient
-      .register(
-        interval,
-        strategies.findAll().map((strategy) => strategy.name),
-      )
-      .then(() => this.start())
-      .catch((error) => {
-        this.logger.error(error)
-      })
   }
 
   async update(): Promise<void> {
