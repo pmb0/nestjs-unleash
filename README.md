@@ -17,6 +17,9 @@
 # Table of contents <!-- omit in toc -->
 
 - [Usage](#usage)
+  - [Synchronous configuration](#synchronous-configuration)
+  - [Asynchronous configuration](#asynchronous-configuration)
+  - [Usage in controllers or providers](#usage-in-controllers-or-providers)
   - [Configuration](#configuration)
   - [Custom strategies](#custom-strategies)
 - [License](#license)
@@ -27,7 +30,11 @@
 $ npm install --save nestjs-unleash
 ```
 
-Import the module with `UnleashModule.forRoot(...)`:
+Import the module with `UnleashModule.forRoot(...)` or `UnleashModule.forRootAsync(...)`.
+
+## Synchronous configuration
+
+Use `UnleashModule.forRoot()`. Available ptions are described in the [UnleashModuleOptions interface](#configuration).
 
 ```ts
 @Module({
@@ -41,6 +48,30 @@ Import the module with `UnleashModule.forRoot(...)`:
 })
 export class MyModule {}
 ```
+
+## Asynchronous configuration
+
+If you want to use retrieve you [Unleash options](#configuration) dynamically, use `UnleashModule.forRootAsync()`. Use `useFactory` and `inject` to import your dependencies. Example using the `ConfigService`:
+
+```ts
+@Module({
+  imports: [
+    UnleashModule.forRootAsync({
+      useFactory: (config: ConfigService) => ({
+        url: config.get("UNLEASH_URL"),
+        appName: config.get("UNLEASH_APP_NAME"),
+        instanceId: config.get("UNLEASH_INSTANCE_ID"),
+        refreshInterval: config.get("UNLEASH_REFRESH_INTERVAL"),
+        metricsInterval: config.get("UNLEASH_METRICS_INTERVAL"),
+      }),
+      inject: [ConfigService],
+    }),
+  ],
+})
+export class MyModule {}
+```
+
+## Usage in controllers or providers
 
 In your controller use the `UnleashService` or the `@IfEnabled(...)` route decorator:
 
