@@ -1,3 +1,6 @@
+import { ModuleMetadata, Provider, Type } from '@nestjs/common'
+import { UnleashStrategy } from './strategy'
+
 // https://github.com/SerayaEryn/fastify-session/blob/master/types/types.d.ts
 export interface FastifySession {
   sessionId: string
@@ -26,4 +29,25 @@ export interface Context {
   environment?: string
   appName?: string
   properties?: Properties
+}
+
+export interface UnleashStrategiesOptionsFactory {
+  createStrategiesOptions():
+    | Promise<UnleashStrategiesModuleOptions>
+    | UnleashStrategiesModuleOptions
+}
+
+export interface UnleashStrategiesModuleOptions {
+  strategies: Type<UnleashStrategy>[]
+}
+
+export interface UnleashStrategiesModuleAsyncOptions
+  extends Pick<ModuleMetadata, 'imports'> {
+  extraProviders?: Provider[]
+  inject?: any[]
+  useExisting?: Type<UnleashStrategiesOptionsFactory>
+  useClass?: Type<UnleashStrategiesOptionsFactory>
+  useFactory?: (
+    ...args: any[]
+  ) => Promise<UnleashStrategiesModuleOptions> | UnleashStrategiesModuleOptions
 }

@@ -1,4 +1,4 @@
-import { Type } from '@nestjs/common'
+import { ModuleMetadata, Provider, Type } from '@nestjs/common'
 import { UnleashStrategy } from '../unleash-strategies'
 
 export interface UnleashModuleOptions {
@@ -44,4 +44,14 @@ export interface UnleashModuleOptions {
    * Array of custom strategies. These classes mus implement the `UnleashStrategy` interface.
    */
   strategies?: Type<UnleashStrategy>[]
+}
+
+export interface UnleashModuleAsyncOptions
+  extends Pick<ModuleMetadata, 'imports'> {
+  global?: boolean
+  extraProviders?: Provider[]
+  inject?: any[]
+  useFactory?: (
+    ...args: any[]
+  ) => Promise<UnleashModuleOptions> | UnleashModuleOptions
 }
