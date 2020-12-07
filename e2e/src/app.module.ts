@@ -12,7 +12,7 @@ import { UsersService } from './users.service'
       url: 'https://unleash.herokuapp.com/api/client',
       appName: 'my-app-name',
       instanceId: process.pid.toString(),
-      // refreshInterval: 15000,
+      refreshInterval: 20000,
       // metricsInterval: 3000,
       strategies: [MyCustomStrategy],
     }),

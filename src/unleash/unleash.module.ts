@@ -27,7 +27,19 @@ import { TogglesUpdaterService } from './updaters/toggles-updater.service'
 const DEFAULT_TIMEOUT = 1000
 const DEFAULT_INTERVAL = 15000
 
-@Module({})
+@Module({
+  imports: [ScheduleModule.forRoot()],
+  providers: [
+    MetricsRepository,
+    MetricsService,
+    MetricsUpdaterService,
+    ToggleRepository,
+    TogglesUpdaterService,
+    UnleashContext,
+    UnleashService,
+  ],
+  exports: [UnleashService, UnleashStrategiesModule],
+})
 export class UnleashModule implements OnModuleInit {
   private readonly logger = new Logger(UnleashModule.name)
 
@@ -58,7 +70,6 @@ export class UnleashModule implements OnModuleInit {
       global: options?.global ?? true,
       module: UnleashModule,
       imports: [
-        ScheduleModule.forRoot(),
         UnleashClientModule.register({
           baseURL: options.url,
           appName: options.appName,
@@ -76,15 +87,7 @@ export class UnleashModule implements OnModuleInit {
           provide: METRICS_INTERVAL,
           useValue: options.metricsInterval ?? DEFAULT_INTERVAL,
         },
-        MetricsRepository,
-        MetricsService,
-        MetricsUpdaterService,
-        ToggleRepository,
-        TogglesUpdaterService,
-        UnleashContext,
-        UnleashService,
       ],
-      exports: [UnleashService, UnleashStrategiesModule],
     }
   }
 }
