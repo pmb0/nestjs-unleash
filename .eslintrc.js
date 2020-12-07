@@ -8,5 +8,11 @@ module.exports = {
   },
   env: {
     node: true,
-  }
+  },
+  overrides: [{
+    files: ['*.spec.ts'],
+    rules: {
+      '@typescript-eslint/unbound-method': 'off'
+    }
+  }]
 }
