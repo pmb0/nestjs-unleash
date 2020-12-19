@@ -52,7 +52,7 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@heise/eslint-config": "^14.0.0",
+    "@heise/eslint-config": "^15.0.2",
     "@nestjs/cli": "^7.0.0",
     "@nestjs/common": "^7.0.0",
     "@nestjs/config": "^0.6.1",
