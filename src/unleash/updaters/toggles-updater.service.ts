@@ -35,8 +35,11 @@ export class TogglesUpdaterService extends BaseUpdater {
         error.response?.status === HttpStatus.NOT_FOUND
       ) {
         const { url, baseURL } = error.config
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        console.warn(`Could not retrieve ${baseURL!}${url!}: ${error.message}`)
+
+        this.logger.warn(
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          `Could not retrieve ${baseURL!}${url!}: ${error.message}`,
+        )
       }
     }
   }
