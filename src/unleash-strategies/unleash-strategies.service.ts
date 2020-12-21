@@ -40,7 +40,6 @@ export class UnleashStrategiesService implements OnModuleInit {
       gradualRolloutRandom,
       gradualRolloutUserId,
       gradualRolloutSessionId,
-      // ...strategies.map((strategy) => module.get(strategy)),
     ]
   }
 
