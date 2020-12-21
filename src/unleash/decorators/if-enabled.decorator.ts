@@ -18,9 +18,9 @@ export class IfEnabledGuard implements CanActivate {
     private readonly moduleRef: ModuleRef,
   ) {}
 
-  canActivate(context: ExecutionContext): boolean | Promise<boolean> {
+  canActivate(context: ExecutionContext): boolean {
     const toggle = this.reflector.get<string>(
-      'toggleName',
+      METADATA_TOGGLE_NAME,
       context.getHandler(),
     )
 
@@ -32,10 +32,12 @@ export class IfEnabledGuard implements CanActivate {
   }
 }
 
+export const METADATA_TOGGLE_NAME = 'toggleName'
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function IfEnabled(toggleName: string) {
   return applyDecorators(
-    SetMetadata('toggleName', toggleName),
+    SetMetadata(METADATA_TOGGLE_NAME, toggleName),
     UseGuards(IfEnabledGuard),
   )
 }
