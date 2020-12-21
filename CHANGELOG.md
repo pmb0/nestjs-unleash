@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/pmb0/nestjs-unleash/compare/v1.1.0...v1.1.1) (2020-12-21)
+
+
+### Bug Fixes
+
+* main/types ([017976e](https://github.com/pmb0/nestjs-unleash/commit/017976edd415e434ece5edbbce780c48bb618389))
+
 # [1.1.0](https://github.com/pmb0/nestjs-unleash/compare/v1.0.4...v1.1.0) (2020-12-07)
 
 
