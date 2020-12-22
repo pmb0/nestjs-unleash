@@ -98,6 +98,10 @@
       "json",
       "ts"
     ],
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      ".module.ts"
+    ],
     "rootDir": "src",
     "testRegex": ".spec.ts$",
     "transform": {
