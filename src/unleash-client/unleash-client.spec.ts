@@ -35,4 +35,20 @@ describe('UnleashClient', () => {
     })
     expect(requestSpy).toHaveBeenCalledWith({ method: 'GET', url: '/foo' })
   })
+
+  it('get()', async () => {
+    await client.get('/test')
+
+    expect(requestSpy).toHaveBeenCalledWith({ method: 'GET', url: '/test' })
+  })
+
+  it('post()', async () => {
+    await client.post('/test', { my: 'data' })
+
+    expect(requestSpy).toHaveBeenCalledWith({
+      data: { my: 'data' },
+      method: 'POST',
+      url: '/test',
+    })
+  })
 })
