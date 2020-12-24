@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseRepository create() 1`] = `
+MyRepository {
+  "items": Array [
+    Object {
+      "id": "1",
+      "name": "my name",
+    },
+  ],
+}
+`;
+
+exports[`BaseRepository findAll() 1`] = `
+Array [
+  Object {
+    "id": "1",
+    "name": "my name",
+  },
+  Object {
+    "id": "2",
+    "name": "other",
+  },
+]
+`;
+
+exports[`BaseRepository update() 1`] = `
+MyRepository {
+  "items": Array [
+    Object {
+      "id": "1",
+      "name": "updated",
+    },
+  ],
+}
+`;
+
+exports[`BaseRepository updateOrCreate() 1`] = `
+MyRepository {
+  "items": Array [
+    Object {
+      "id": "1",
+      "name": "my name",
+    },
+  ],
+}
+`;
+
+exports[`BaseRepository updateOrCreate() 2`] = `
+MyRepository {
+  "items": Array [
+    Object {
+      "id": "1",
+      "name": "my new name",
+    },
+  ],
+}
+`;
