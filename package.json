@@ -100,7 +100,8 @@
     ],
     "coveragePathIgnorePatterns": [
       "node_modules",
-      ".module.ts"
+      ".module.ts",
+      "testing"
     ],
     "rootDir": "src",
     "testRegex": ".spec.ts$",

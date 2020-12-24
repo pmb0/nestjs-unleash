@@ -1,3 +1,4 @@
+import { mockRandom } from '../testing'
 import { normalizedValue, randomGenerator } from './util'
 
 describe('Util', () => {
@@ -7,9 +8,7 @@ describe('Util', () => {
   })
 
   test('randomGenerator()', () => {
-    // https://xkcd.com/221/
-    jest.spyOn(global.Math, 'random').mockImplementation(() => 0.55)
-
+    mockRandom(0.55)
     expect(randomGenerator()).toBe(56)
   })
 })
