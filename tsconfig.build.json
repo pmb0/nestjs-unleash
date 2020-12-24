@@ -5,6 +5,7 @@
     "__tests__",
     "e2e",
     "test",
+    "src/testing",
     "dist",
     "**/*spec.ts",
     "**/*test.ts"
