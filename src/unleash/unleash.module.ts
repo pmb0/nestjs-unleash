@@ -85,7 +85,8 @@ export class UnleashModule implements OnModuleInit {
         baseURL: options.url,
         appName: options.appName,
         instanceId: options.instanceId,
-        timeout: options.timeout || DEFAULT_TIMEOUT,
+        timeout: options.http?.timeout || DEFAULT_TIMEOUT,
+        http: options.http,
       }),
       inject: [UNLEASH_MODULE_OPTIONS],
     })
@@ -128,7 +129,8 @@ export class UnleashModule implements OnModuleInit {
         baseURL: options.url,
         appName: options.appName,
         instanceId: options.instanceId,
-        timeout: options.timeout || DEFAULT_TIMEOUT,
+        timeout: options.http?.timeout || DEFAULT_TIMEOUT,
+        http: options.http,
       }),
       inject: [UNLEASH_MODULE_OPTIONS],
     })

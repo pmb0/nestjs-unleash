@@ -1,10 +1,11 @@
 import { ModuleMetadata, Type } from '@nestjs/common'
+import { AxiosRequestConfig } from 'axios'
 
 export interface UnleashClientModuleOptions {
   baseURL: string
   instanceId: string
   appName: string
-  timeout: number
+  http?: AxiosRequestConfig
 }
 
 export interface UnleashClientModuleOptionsFactory {

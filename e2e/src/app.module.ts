@@ -25,6 +25,11 @@ import { UsersService } from './users.service'
         refreshInterval: 20000,
         // metricsInterval: 3000,
         // strategies: [MyCustomStrategy],
+        http: {
+          headers: {
+            'X-Foo': 'bar',
+          },
+        },
       }),
     }),
   ],

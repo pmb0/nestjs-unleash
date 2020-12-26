@@ -1,4 +1,5 @@
 import { ModuleMetadata, Provider, Type } from '@nestjs/common'
+import { AxiosRequestConfig } from 'axios'
 import { UnleashStrategy } from '../unleash-strategies'
 
 export interface UnleashModuleOptions {
@@ -27,7 +28,11 @@ export interface UnleashModuleOptions {
    */
   instanceId: string
 
-  timeout?: number
+  /**
+   * Additional options for the HTTP request to the Unleash server, e.g. custom
+   * HTTP headers
+   */
+  http?: AxiosRequestConfig
 
   /**
    * At which interval, in milliseconds, will this client update its feature

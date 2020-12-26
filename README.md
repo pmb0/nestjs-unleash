@@ -131,7 +131,11 @@ interface UnleashModuleOptions {
    */
   instanceId: string;
 
-  timeout?: number;
+  /**
+   * Additional options for the HTTP request to the Unleash server, e.g. custom
+   * HTTP headers
+   */
+  http?: AxiosRequestConfig;
 
   /**
    * At which interval, in milliseconds, will this client update its feature
