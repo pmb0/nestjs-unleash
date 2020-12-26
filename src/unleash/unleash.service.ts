@@ -24,6 +24,10 @@ export class UnleashService {
       return defaultValue
     }
 
+    if (toggle.stale) {
+      this.logger.warn(`Toggle is stale: ${name}`)
+    }
+
     if (!toggle.enabled) {
       this.logger.log(`Toggle is disabled: ${name}`)
       return defaultValue

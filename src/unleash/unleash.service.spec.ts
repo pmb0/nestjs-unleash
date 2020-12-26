@@ -51,6 +51,7 @@ describe('UnleashService', () => {
   let service: UnleashService
   let toggles: ToggleRepository
   let metrics: jest.Mocked<MetricsService>
+  let warnSpy: jest.SpyInstance
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -77,6 +78,9 @@ describe('UnleashService', () => {
     metrics = module.get(MetricsService)
     toggles = module.get(ToggleRepository)
     service = await module.resolve(UnleashService)
+
+    // @ts-ignore (private)
+    warnSpy = jest.spyOn(service.logger, 'warn')
   })
 
   describe('_isEnabled()', () => {
@@ -149,6 +153,19 @@ describe('UnleashService', () => {
         )
 
         expect(service._isEnabled('foo')).toBe(false)
+      })
+
+      it('warns when a stale toggle is used', () => {
+        toggles.create(
+          createFeatureToggle({
+            name: 'foo',
+            strategies: [],
+            stale: true,
+          }),
+        )
+
+        service._isEnabled('foo')
+        expect(warnSpy).toHaveBeenCalledWith('Toggle is stale: foo')
       })
     })
 
