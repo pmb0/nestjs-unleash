@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/pmb0/nestjs-unleash/compare/v1.1.1...v1.2.0) (2020-12-26)
+
+
+### Features
+
+* support custom HTTP config/headers ([20f3996](https://github.com/pmb0/nestjs-unleash/commit/20f3996ef942289855c9997103b87475fae887b1))
+* warn if a toggle is stale ([28417e8](https://github.com/pmb0/nestjs-unleash/commit/28417e8c2c377f40b661c9a52e10f2b753b2a999))
+
 ## [1.1.1](https://github.com/pmb0/nestjs-unleash/compare/v1.1.0...v1.1.1) (2020-12-21)
 
 
