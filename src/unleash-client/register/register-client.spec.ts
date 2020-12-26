@@ -1,6 +1,7 @@
 import { HttpModule } from '@nestjs/common'
 import { Test, TestingModule } from '@nestjs/testing'
 import { UnleashRegisterClient } from '..'
+import { version } from '../../../package.json'
 import { UnleashClient } from '../unleash-client'
 import { UNLEASH_CLIENT_OPTIONS } from '../unleash-client.constants'
 
@@ -47,7 +48,7 @@ describe('UnleashClient', () => {
       appName: 'myApp',
       instanceId: 'myId',
       interval: 1234,
-      sdkVersion: 'nestjs-unleash@1.1.1',
+      sdkVersion: `nestjs-unleash@${version}`,
       started: '2016-06-20T12:08:10.000Z',
       strategies: ['a', 'b'],
     })
