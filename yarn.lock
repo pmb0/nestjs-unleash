@@ -6406,9 +6406,9 @@ memory-fs@^0.5.0:
     readable-stream "^2.0.1"
 
 meow@^8.0.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/meow/-/meow-8.1.0.tgz#0fcaa267e35e4d58584b8205923df6021ddcc7ba"
-  integrity sha512-fNWkgM1UVMey2kf24yLiccxLihc5W+6zVus3/N0b+VfnJgxV99E9u04X6NAiKdg6ED7DAQBX5sy36NM0QJZkWA==
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-8.1.2.tgz#bcbe45bda0ee1729d350c03cffc8395a36c4e897"
+  integrity sha512-r85E3NdZ+mpYk1C6RjPFEMSE+s1iZMuHtsHAqY0DT3jZczl0diWUZ8g6oU7h0M9cD2EL+PzaYghhCLzR0ZNn5Q==
   dependencies:
     "@types/minimist" "^1.2.0"
     camelcase-keys "^6.2.2"
@@ -7595,13 +7595,12 @@ pify@^3.0.0:
   integrity sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
 
 pinst@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/pinst/-/pinst-2.1.1.tgz#cba4a49bdbfdeaedc88bd4e01bcd1ee6e4641333"
-  integrity sha512-n8P1bTw2B3Ff/wkG2yP7HN3wBIkobfkuNS5WNhsUrM+/QTSJUZc2n/WPUSxONRjaXMffmjCNDTjwDy0ptVHlbw==
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/pinst/-/pinst-2.1.2.tgz#3d6050496166caed7b26bfc5eed5fa93bf9246b3"
+  integrity sha512-xjiVEDHUx2bGXxU3+wnadIG0Nf/b/mulut74itQytv5Xy3fhBQgI1hW0P/wrynPZ7NJXYoNhg+uhT2h27G35XA==
   dependencies:
     load-json-file "^6.2.0"
     lodash.mapkeys "^4.6.0"
-    meow "^8.0.0"
     write-json-file "^4.3.0"
 
 pirates@^4.0.1:
@@ -8633,9 +8632,9 @@ socks@~2.3.2:
     smart-buffer "^4.1.0"
 
 sort-keys@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/sort-keys/-/sort-keys-4.1.0.tgz#727edc12fee49ce482848db07369ec44e0f3e9f2"
-  integrity sha512-/sRdxzkkPFUYiCrTr/2t+104nDc9AgDmEpeVYuvOWYQe3Djk1GWO6lVw3Vx2jfh1SsR0eehhd1nvFYlzt5e99w==
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/sort-keys/-/sort-keys-4.2.0.tgz#6b7638cee42c506fff8c1cecde7376d21315be18"
+  integrity sha512-aUYIEU/UviqPgc8mHR6IW1EGxkAXpeRETYcrzg8cLAvUPZcpAlleSXHV2mY7G12GphSH6Gzv+4MMVSSkbdteHg==
   dependencies:
     is-plain-obj "^2.0.0"
 
