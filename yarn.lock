@@ -1477,9 +1477,9 @@
     eslint-visitor-keys "^2.0.0"
 
 "@unleash/client-specification@^3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@unleash/client-specification/-/client-specification-3.3.0.tgz#cdee9ed2a30be03134d2bf79d28614f416abe98d"
-  integrity sha512-nHaC/7nP7+gC83k3n3lXuqt7PV/eKPSYCe8I0ijL6riCdhdtdaIe0eKKHI97A3+MCw5UNvf4dXm7zTnkJX4LpQ==
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@unleash/client-specification/-/client-specification-3.3.1.tgz#4f0527c7bf1d6f77d7dbb909f698340f8b117049"
+  integrity sha512-B+NlU9LSGPLKJ7LpKW//2XcFhTZLruGNoiy/o2Zd93RRLpf1Yy9Bpyw8hsZw8tZrdRweWOXyFbttXroqk1j1ww==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
