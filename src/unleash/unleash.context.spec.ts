@@ -1,3 +1,4 @@
+import { UnleashModuleOptions } from '.'
 import { Request } from '../unleash-strategies'
 import { UnleashContext } from './unleash.context'
 
@@ -21,6 +22,7 @@ describe('UnleashContext', () => {
           id: 'abc',
         },
       }),
+      {} as UnleashModuleOptions,
     )
   })
 

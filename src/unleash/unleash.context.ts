@@ -1,13 +1,24 @@
 import { Inject, Injectable, Scope } from '@nestjs/common'
 import { REQUEST } from '@nestjs/core'
+import { UnleashModuleOptions } from '.'
 import { ExpressSession, FastifySession, Request } from '../unleash-strategies'
+import { UNLEASH_MODULE_OPTIONS } from './unleash.constants'
+
+const defaultUserIdFactory = (request: Request<{ id: string }>) => {
+  return request.user?.id?.toString()
+}
 
 @Injectable({ scope: Scope.REQUEST })
 export class UnleashContext {
-  constructor(@Inject(REQUEST) private request: Request<{ id: string }>) {}
+  constructor(
+    @Inject(REQUEST) private request: Request<{ id: string }>,
+    @Inject(UNLEASH_MODULE_OPTIONS)
+    private readonly options: UnleashModuleOptions,
+  ) {}
 
   getUserId(): string | undefined {
-    return this.request.user?.id?.toString()
+    const userIdFactory = this.options.userIdFactory ?? defaultUserIdFactory
+    return userIdFactory(this.request)
   }
 
   getRemoteAddress(): string | undefined {

@@ -157,6 +157,13 @@ interface UnleashModuleOptions {
    * `nestjs-unleash` sends an initial registration request to the unleash server at startup. This behavior can be disabled by this option.
    */
   disableRegistration?: boolean;
+
+  /**
+   * Some strategies depend on the user ID of the currently logged in user. The
+   * user ID is expected by default in `request.user.id`. To customize this
+   * behavior, a custom user ID factory can be provided.
+   */
+  userIdFactory?: (request: Request<{ id: string }>) => string;
 }
 ```
 
