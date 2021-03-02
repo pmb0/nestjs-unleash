@@ -49,6 +49,11 @@ export interface UnleashModuleOptions {
    * Array of custom strategies. These classes mus implement the `UnleashStrategy` interface.
    */
   strategies?: Type<UnleashStrategy>[]
+
+  /**
+   * `nestjs-unleash` sends an initial registration request to the unleash server at startup. This behavior can be disabled by this option.
+   */
+  disableRegistration?: boolean
 }
 
 export interface UnleashModuleAsyncOptions

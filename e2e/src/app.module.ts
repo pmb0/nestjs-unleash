@@ -18,6 +18,7 @@ import { UsersService } from './users.service'
     // }),
     UnleashModule.forRootAsync({
       useFactory: () => ({
+        // disableRegistration: true,
         // url: 'http://127.0.0.1:3000/unleash',
         url: 'https://unleash.herokuapp.com/api/client',
         appName: 'my-app-name',

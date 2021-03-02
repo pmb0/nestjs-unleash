@@ -55,19 +55,23 @@ export class UnleashModule implements OnModuleInit {
     private readonly registerClient: UnleashRegisterClient,
     @Inject(METRICS_INTERVAL) private readonly metricsInterval: number,
     private readonly strategies: UnleashStrategiesService,
+    @Inject(UNLEASH_MODULE_OPTIONS)
+    private readonly options: UnleashModuleOptions,
   ) {}
 
   async onModuleInit(): Promise<void> {
     await this.togglesUpdater.start()
 
-    try {
-      await this.registerClient.register(
-        this.metricsInterval,
-        this.strategies.findAll().map((strategy) => strategy.name),
-      )
-      await this.metricsUpdater.start()
-    } catch (error) {
-      this.logger.error(error)
+    if (!(this.options.disableRegistration ?? true)) {
+      try {
+        await this.registerClient.register(
+          this.metricsInterval,
+          this.strategies.findAll().map((strategy) => strategy.name),
+        )
+        await this.metricsUpdater.start()
+      } catch (error) {
+        this.logger.error(error)
+      }
     }
   }
 
