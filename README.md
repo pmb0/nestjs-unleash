@@ -21,6 +21,7 @@
   - [Asynchronous configuration](#asynchronous-configuration)
   - [Usage in controllers or providers](#usage-in-controllers-or-providers)
   - [Configuration](#configuration)
+  - [Default strategies](#default-strategies)
   - [Custom strategies](#custom-strategies)
 - [License](#license)
 
@@ -166,6 +167,10 @@ interface UnleashModuleOptions {
   userIdFactory?: (request: Request<{ id: string }>) => string;
 }
 ```
+
+## Default strategies
+
+This module supports the [official standard activation strategies](https://docs.getunleash.io/docs/user_guide/activation_strategy). They do not need to be activated separately and work out of the box.
 
 ## Custom strategies
 
