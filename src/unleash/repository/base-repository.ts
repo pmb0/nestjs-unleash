@@ -5,6 +5,7 @@ export abstract class BaseRepository<T extends { id: string }> {
   private items: T[] = []
 
   updateOrCreate(id: string, item: T): void {
+    // eslint-disable-next-line unicorn/prefer-array-some
     this.find(item.id) ? this.update(id, item) : this.create(item)
   }
 
