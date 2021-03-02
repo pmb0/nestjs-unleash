@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/pmb0/nestjs-unleash/compare/v1.3.0...v1.4.0) (2021-03-02)
+
+
+### Features
+
+* add `userIdFactory` option ([#63](https://github.com/pmb0/nestjs-unleash/issues/63)) ([2831f1b](https://github.com/pmb0/nestjs-unleash/commit/2831f1ba7524ae67df2b838143216c68463c5865))
+
 # [1.3.0](https://github.com/pmb0/nestjs-unleash/compare/v1.2.0...v1.3.0) (2021-03-02)
 
 
