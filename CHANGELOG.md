@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/pmb0/nestjs-unleash/compare/v1.2.0...v1.3.0) (2021-03-02)
+
+
+### Features
+
+* make initial registration deactivatable ([#61](https://github.com/pmb0/nestjs-unleash/issues/61)) ([2b7f095](https://github.com/pmb0/nestjs-unleash/commit/2b7f095cb1c81b2234c01779ebd983c8d2f8a2ad))
+
 # [1.2.0](https://github.com/pmb0/nestjs-unleash/compare/v1.1.1...v1.2.0) (2020-12-26)
 
 
