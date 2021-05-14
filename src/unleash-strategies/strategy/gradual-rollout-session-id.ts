@@ -10,7 +10,8 @@ export interface GradualRolloutSessionIdParameters {
 
 @Injectable()
 export class GradualRolloutSessionIdStrategy
-  implements UnleashStrategy<GradualRolloutSessionIdParameters> {
+  implements UnleashStrategy<GradualRolloutSessionIdParameters>
+{
   name = 'gradualRolloutSessionId'
 
   isEnabled(
