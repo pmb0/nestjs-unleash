@@ -11,7 +11,7 @@ const Date = global.Date
 global.Date = class extends Date {
   constructor() {
     super()
-    return new Date(1466424490000)
+    return new Date(1_466_424_490_000)
   }
 }
 

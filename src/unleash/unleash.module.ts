@@ -31,7 +31,7 @@ import { MetricsUpdaterService } from './updaters/metrics-updater.service'
 import { TogglesUpdaterService } from './updaters/toggles-updater.service'
 
 const DEFAULT_TIMEOUT = 1000
-const DEFAULT_INTERVAL = 15000
+const DEFAULT_INTERVAL = 15_000
 
 @Module({
   imports: [ScheduleModule.forRoot()],
