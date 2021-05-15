@@ -13,13 +13,8 @@
     "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "target": "es2020",
+    "target": "ES2019"
   },
-  "include": [
-    "src/**/*",
-    "__tests__/**/*",
-    "__mocks__/**/*",
-    "e2e/**/*"
-  ],
+  "include": ["src/**/*", "__tests__/**/*", "__mocks__/**/*", "e2e/**/*"],
   "exclude": ["node_modules", "dist"]
 }
