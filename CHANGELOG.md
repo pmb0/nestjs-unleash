@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/pmb0/nestjs-unleash/compare/v1.4.0...v1.4.1) (2021-05-15)
+
+
+### Bug Fixes
+
+* use "ES2019" as output target ([#22](https://github.com/pmb0/nestjs-unleash/issues/22)) ([617b147](https://github.com/pmb0/nestjs-unleash/commit/617b1474204ea1b70db0ca272e92a7bf58bb36d9))
+
 # [1.4.0](https://github.com/pmb0/nestjs-unleash/compare/v1.3.0...v1.4.0) (2021-03-02)
 
 
