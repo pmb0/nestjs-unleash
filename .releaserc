@@ -1,6 +1,6 @@
   {
   "branches": ["master"],
-  "repositoryUrl": "git@github.com:pmb0/express-tsx-views.git",
+  "repositoryUrl": "git@github.com:pmb0/nestjs-unleash.git",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
