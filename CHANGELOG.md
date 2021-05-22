@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/pmb0/nestjs-unleash/compare/v1.4.1...v1.4.2) (2021-05-22)
+
+
+### Bug Fixes
+
+* add missing `UnleashService` export ([12d81bb](https://github.com/pmb0/nestjs-unleash/commit/12d81bb52fb02867962e4242164c9e0ae2fec337))
+
 ## [1.4.1](https://github.com/pmb0/nestjs-unleash/compare/v1.4.0...v1.4.1) (2021-05-15)
 
 
