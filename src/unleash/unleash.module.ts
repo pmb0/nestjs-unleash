@@ -44,7 +44,7 @@ const DEFAULT_INTERVAL = 15_000
     UnleashContext,
     UnleashService,
   ],
-  exports: [UnleashService, UnleashStrategiesModule],
+  exports: [UnleashService, UnleashStrategiesModule, ToggleRepository],
 })
 export class UnleashModule implements OnModuleInit {
   private readonly logger = new Logger(UnleashModule.name)
@@ -98,7 +98,7 @@ export class UnleashModule implements OnModuleInit {
       global: options?.global ?? true,
       module: UnleashModule,
       imports: [strategiesModule, clientModule],
-      exports: [clientModule, strategiesModule, UNLEASH_MODULE_OPTIONS],
+      exports: [clientModule, strategiesModule, UNLEASH_MODULE_OPTIONS, ToggleRepository],
       providers: [
         {
           provide: UNLEASH_MODULE_OPTIONS,
@@ -142,7 +142,7 @@ export class UnleashModule implements OnModuleInit {
       global: options?.global ?? true,
       module: UnleashModule,
       imports: [strategiesModule, clientModule],
-      exports: [clientModule, strategiesModule, UNLEASH_MODULE_OPTIONS],
+      exports: [clientModule, strategiesModule, UNLEASH_MODULE_OPTIONS, ToggleRepository],
       providers: [
         {
           provide: UNLEASH_MODULE_OPTIONS,
