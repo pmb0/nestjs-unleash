@@ -98,7 +98,12 @@ export class UnleashModule implements OnModuleInit {
       global: options?.global ?? true,
       module: UnleashModule,
       imports: [strategiesModule, clientModule],
-      exports: [clientModule, strategiesModule, UNLEASH_MODULE_OPTIONS, ToggleRepository],
+      exports: [
+        clientModule,
+        strategiesModule,
+        UNLEASH_MODULE_OPTIONS,
+        ToggleRepository,
+      ],
       providers: [
         {
           provide: UNLEASH_MODULE_OPTIONS,
@@ -142,7 +147,12 @@ export class UnleashModule implements OnModuleInit {
       global: options?.global ?? true,
       module: UnleashModule,
       imports: [strategiesModule, clientModule],
-      exports: [clientModule, strategiesModule, UNLEASH_MODULE_OPTIONS, ToggleRepository],
+      exports: [
+        clientModule,
+        strategiesModule,
+        UNLEASH_MODULE_OPTIONS,
+        ToggleRepository,
+      ],
       providers: [
         {
           provide: UNLEASH_MODULE_OPTIONS,
