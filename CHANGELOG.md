@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/pmb0/nestjs-unleash/compare/v1.4.2...v1.4.3) (2021-07-25)
+
+
+### Bug Fixes
+
+* export `ToggleRepository` ([612ceb9](https://github.com/pmb0/nestjs-unleash/commit/612ceb943e0180ea16f3b2b16f1f020b32b37961))
+
 ## [1.4.2](https://github.com/pmb0/nestjs-unleash/compare/v1.4.1...v1.4.2) (2021-05-22)
 
 ### Bug Fixes
