@@ -1,5 +1,7 @@
-import { HttpService, Injectable, Logger } from '@nestjs/common'
+import { HttpService } from '@nestjs/axios'
+import { Injectable, Logger } from '@nestjs/common'
 import { AxiosRequestConfig } from 'axios'
+import { firstValueFrom } from 'rxjs'
 
 @Injectable()
 export class UnleashClient {
@@ -13,7 +15,7 @@ export class UnleashClient {
     const url = config.url ?? '(unknown url)'
 
     this.logger.debug(`Request: ${method} ${baseUrl}${url}`)
-    const response = await this.http.request<T>(config).toPromise()
+    const response = await firstValueFrom(this.http.request<T>(config))
     return response.data
   }
 
