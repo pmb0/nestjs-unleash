@@ -16,7 +16,7 @@ describe('AppController (e2e)', () => {
     app = await NestFactory.create<NestExpressApplication>(
       ApplicationModule,
       new ExpressAdapter(),
-      { logger: true, abortOnError: false },
+      { logger: ['debug'], abortOnError: false },
     )
 
     app.enableShutdownHooks()
