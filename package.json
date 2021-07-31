@@ -45,7 +45,7 @@
   "peerDependencies": {
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
-    "@nestjs/schedule": "^0.4.1",
+    "@nestjs/schedule": "^1.0.0",
     "axios": "^0.21.0",
     "reflect-metadata": "^0.1.2"
   },
@@ -58,7 +58,7 @@
     "@nestjs/config": "^1.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.5.5",
-    "@nestjs/schedule": "^0.4.1",
+    "@nestjs/schedule": "^1.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^7.5.5",
     "@semantic-release/changelog": "^5.0.1",
