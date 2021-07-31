@@ -1,3 +1,19 @@
+# [2.0.0](https://github.com/pmb0/nestjs-unleash/compare/v1.4.5...v2.0.0) (2021-07-31)
+
+
+### Bug Fixes
+
+* upgrade NestJS to major version 8 ([d4a99a0](https://github.com/pmb0/nestjs-unleash/commit/d4a99a00f1cca855e0719e7a3df88585ab541ef2))
+
+
+### BREAKING CHANGES
+
+* The peer dependencies of NestJS and rxjs have been increased
+to the next major version. To use the new nestjs-unleash version, your project
+must be updated to NestJS 8 and rxjs 7.
+
+test: fix broken e2e test
+
 ## [1.4.5](https://github.com/pmb0/nestjs-unleash/compare/v1.4.4...v1.4.5) (2021-07-31)
 
 
