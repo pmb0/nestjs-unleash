@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/pmb0/nestjs-unleash/compare/v1.4.4...v1.4.5) (2021-07-31)
+
+
+### Bug Fixes
+
+* last release contained breaking changes ([ef8c9ac](https://github.com/pmb0/nestjs-unleash/commit/ef8c9ac8c1293c9f164e8c9dff69aace6a741c85))
+
 ## [1.4.3](https://github.com/pmb0/nestjs-unleash/compare/v1.4.2...v1.4.3) (2021-07-25)
 
 
