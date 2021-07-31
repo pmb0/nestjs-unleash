@@ -1,4 +1,4 @@
-import { HttpModule } from '@nestjs/axios'
+import { HttpModule } from '@nestjs/common'
 import { Test, TestingModule } from '@nestjs/testing'
 import { UnleashRegisterClient } from '..'
 import { version } from '../../../package.json'

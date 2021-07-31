@@ -1,10 +1,3 @@
-## [1.4.4](https://github.com/pmb0/nestjs-unleash/compare/v1.4.3...v1.4.4) (2021-07-31)
-
-
-### Bug Fixes
-
-* upgrade NestJS to major version 8 ([7435efe](https://github.com/pmb0/nestjs-unleash/commit/7435efe6ddcfdf4def096b2c667b8bbdac920caa))
-
 ## [1.4.3](https://github.com/pmb0/nestjs-unleash/compare/v1.4.2...v1.4.3) (2021-07-25)
 
 

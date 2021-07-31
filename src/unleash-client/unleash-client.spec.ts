@@ -1,4 +1,4 @@
-import { HttpModule, HttpService } from '@nestjs/axios'
+import { HttpModule, HttpService } from '@nestjs/common'
 import { Test, TestingModule } from '@nestjs/testing'
 import { of } from 'rxjs'
 import { UnleashClient } from './unleash-client'

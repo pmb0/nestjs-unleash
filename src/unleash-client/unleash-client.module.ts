@@ -1,5 +1,4 @@
-import { HttpModule } from '@nestjs/axios'
-import { DynamicModule, Module, Provider } from '@nestjs/common'
+import { DynamicModule, HttpModule, Module, Provider } from '@nestjs/common'
 import { AxiosRequestConfig } from 'axios'
 import {
   UnleashFeaturesClient,
