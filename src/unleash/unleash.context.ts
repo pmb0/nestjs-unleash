@@ -31,4 +31,8 @@ export class UnleashContext {
       (this.request.session as FastifySession | undefined)?.sessionId
     )
   }
+
+  getRequest<T = Request<{ id: string }>>(): T {
+    return this.request as T
+  }
 }

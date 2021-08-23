@@ -10,20 +10,21 @@ function createRequest(
 
 describe('UnleashContext', () => {
   let context: UnleashContext
+  let req: Request<{
+    id: string
+  }>
 
   beforeEach(() => {
-    context = new UnleashContext(
-      createRequest({
-        ip: '1.2.3.4',
-        user: {
-          id: '123',
-        },
-        session: {
-          id: 'abc',
-        },
-      }),
-      {} as UnleashModuleOptions,
-    )
+    req = createRequest({
+      ip: '1.2.3.4',
+      user: {
+        id: '123',
+      },
+      session: {
+        id: 'abc',
+      },
+    })
+    context = new UnleashContext(req, {} as UnleashModuleOptions)
   })
 
   test('getUserId()', () => {
@@ -40,5 +41,13 @@ describe('UnleashContext', () => {
     // @ts-ignore
     context.request.session = { sessionId: 'def' }
     expect(context.getSessionId()).toBe('def')
+  })
+
+  test('getRequest()', () => {
+    expect(context.getRequest()).toStrictEqual(req)
+
+    // @ts-ignore
+    context.request = { hello: 'world' }
+    expect(context.getRequest()).toStrictEqual({ hello: 'world' })
   })
 })
