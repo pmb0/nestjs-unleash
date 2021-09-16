@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/pmb0/nestjs-unleash/compare/v2.0.0...v2.1.0) (2021-09-16)
+
+
+### Features
+
+* Add request to UnleashContext ([90b7966](https://github.com/pmb0/nestjs-unleash/commit/90b79664e18cbd10954ea4b3540ba0dbe45313fb))
+
 # [2.0.0](https://github.com/pmb0/nestjs-unleash/compare/v1.4.5...v2.0.0) (2021-07-31)
 
 
