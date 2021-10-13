@@ -50,4 +50,12 @@ describe('UnleashContext', () => {
     context.request = { hello: 'world' }
     expect(context.getRequest()).toStrictEqual({ hello: 'world' })
   })
+
+  test('Properties', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(context.Properties).toStrictEqual(new Map<string, any>())
+
+    context.Properties.set('hello', 'world')
+    expect(context.Properties.get('hello')).toStrictEqual('world')
+  })
 })
