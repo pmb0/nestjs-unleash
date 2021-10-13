@@ -10,6 +10,7 @@ const defaultUserIdFactory = (request: Request<{ id: string }>) => {
 
 @Injectable({ scope: Scope.REQUEST })
 export class UnleashContext {
+  private properties = new Map<string, any>()
   constructor(
     @Inject(REQUEST) private request: Request<{ id: string }>,
     @Inject(UNLEASH_MODULE_OPTIONS)
@@ -34,5 +35,9 @@ export class UnleashContext {
 
   getRequest<T = Request<{ id: string }>>(): T {
     return this.request as T
+  }
+
+  get Properties(): Map<string, any> {
+    return this.properties
   }
 }

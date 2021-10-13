@@ -1,37 +1,38 @@
-# [2.1.0](https://github.com/pmb0/nestjs-unleash/compare/v2.0.0...v2.1.0) (2021-09-16)
-
+# [2.2.0](https://github.com/pmb0/nestjs-unleash/compare/v2.1.0...v2.2.0) (2021-10-13)
 
 ### Features
 
-* Add request to UnleashContext ([90b7966](https://github.com/pmb0/nestjs-unleash/commit/90b79664e18cbd10954ea4b3540ba0dbe45313fb))
+Add dynamic properties on the context - for usage in activation strategies
+
+# [2.1.0](https://github.com/pmb0/nestjs-unleash/compare/v2.0.0...v2.1.0) (2021-09-16)
+
+### Features
+
+- Add request to UnleashContext ([90b7966](https://github.com/pmb0/nestjs-unleash/commit/90b79664e18cbd10954ea4b3540ba0dbe45313fb))
 
 # [2.0.0](https://github.com/pmb0/nestjs-unleash/compare/v1.4.5...v2.0.0) (2021-07-31)
 
-
 ### Bug Fixes
 
-* upgrade NestJS to major version 8 ([d4a99a0](https://github.com/pmb0/nestjs-unleash/commit/d4a99a00f1cca855e0719e7a3df88585ab541ef2))
-
+- upgrade NestJS to major version 8 ([d4a99a0](https://github.com/pmb0/nestjs-unleash/commit/d4a99a00f1cca855e0719e7a3df88585ab541ef2))
 
 ### BREAKING CHANGES
 
-* The peer dependencies of NestJS and rxjs have been increased
-to the next major version. To use the new nestjs-unleash version, your project
-must be updated to NestJS 8 and rxjs 7.
+- The peer dependencies of NestJS and rxjs have been increased
+  to the next major version. To use the new nestjs-unleash version, your project
+  must be updated to NestJS 8 and rxjs 7.
 
 ## [1.4.5](https://github.com/pmb0/nestjs-unleash/compare/v1.4.4...v1.4.5) (2021-07-31)
 
-
 ### Bug Fixes
 
-* last release contained breaking changes ([ef8c9ac](https://github.com/pmb0/nestjs-unleash/commit/ef8c9ac8c1293c9f164e8c9dff69aace6a741c85))
+- last release contained breaking changes ([ef8c9ac](https://github.com/pmb0/nestjs-unleash/commit/ef8c9ac8c1293c9f164e8c9dff69aace6a741c85))
 
 ## [1.4.3](https://github.com/pmb0/nestjs-unleash/compare/v1.4.2...v1.4.3) (2021-07-25)
 
-
 ### Bug Fixes
 
-* export `ToggleRepository` ([612ceb9](https://github.com/pmb0/nestjs-unleash/commit/612ceb943e0180ea16f3b2b16f1f020b32b37961))
+- export `ToggleRepository` ([612ceb9](https://github.com/pmb0/nestjs-unleash/commit/612ceb943e0180ea16f3b2b16f1f020b32b37961))
 
 ## [1.4.2](https://github.com/pmb0/nestjs-unleash/compare/v1.4.1...v1.4.2) (2021-05-22)
 

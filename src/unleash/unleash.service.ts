@@ -62,4 +62,8 @@ export class UnleashService {
     this.metrics.increase(name, isEnabled)
     return isEnabled
   }
+
+  get Properties(): Map<string, any> {
+    return this.context.Properties;
+  }
 }
