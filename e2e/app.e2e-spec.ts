@@ -34,7 +34,7 @@ describe('AppController (e2e)', () => {
         strategies: [
           {
             name: 'userWithId',
-            parameters: { userIds: '1,2,3' },
+            parameters: { userIds: '1,2' },
           },
         ],
       }),
@@ -56,8 +56,17 @@ describe('AppController (e2e)', () => {
     })
 
     test('feature is active', async () => {
-      const response = await http.get('/', { headers: { 'x-user-id': 1 } })
-      expect(response.data).toMatchInlineSnapshot(`"feature is active"`)
+      expect(
+        (await http.get('/', { headers: { 'x-user-id': '1' } })).data,
+      ).toBe('feature is active')
+
+      expect(
+        (await http.get('/', { headers: { 'x-user-id': '2' } })).data,
+      ).toBe('feature is active')
+
+      expect(
+        (await http.get('/', { headers: { 'x-user-id': '3' } })).data,
+      ).toBe('feature is not active')
     })
   })
 
