@@ -8,6 +8,11 @@ function createRequest(
   return data
 }
 
+interface MyCustomData {
+  foo: boolean
+  bar: string
+}
+
 describe('UnleashContext', () => {
   let context: UnleashContext
   let req: Request<{
@@ -49,5 +54,16 @@ describe('UnleashContext', () => {
     // @ts-ignore
     context.request = { hello: 'world' }
     expect(context.getRequest()).toStrictEqual({ hello: 'world' })
+  })
+
+  describe('Custom data', () => {
+    test('extend()', () => {
+      const context = new UnleashContext<MyCustomData>(
+        req,
+        {} as UnleashModuleOptions,
+      )
+      const extendedContext = context.extend({ foo: true, bar: 'baz' })
+      expect(extendedContext.customData).toEqual({ foo: true, bar: 'baz' })
+    })
   })
 })

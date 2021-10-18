@@ -1,0 +1,40 @@
+# https://github.com/Unleash/unleash-docker/blob/master/docker-compose.yml
+# admin / unleash4all
+version: "3.4"
+services:
+  web:
+    image: unleashorg/unleash-server
+    ports:
+      - "4242:4242"
+    environment:
+      DATABASE_URL: "postgres://postgres:unleash@db/postgres"
+      DATABASE_SSL: "false"
+    depends_on:
+      - db
+    command: npm run start
+    healthcheck:
+      test: ["CMD", "nc", "-z", "db", "5432"]
+      interval: 1s
+      timeout: 1m
+      retries: 5
+      start_period: 15s
+  db:
+    expose:
+      - "5432"
+    image: postgres:10-alpine
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "--username=postgres",
+          "--host=127.0.0.1",
+          "--port=5432",
+        ]
+      interval: 2s
+      timeout: 1m
+      retries: 5
+      start_period: 10s

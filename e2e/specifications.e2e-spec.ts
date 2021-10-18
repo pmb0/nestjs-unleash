@@ -19,7 +19,6 @@ import {
   GradualRolloutRandomStrategy,
   GradualRolloutSessionIdStrategy,
   RemoteAddressStrategy,
-  UnleashContext,
   UnleashStrategiesService,
   UserWithIdStrategy,
 } from '../src'
@@ -28,7 +27,10 @@ import { CUSTOM_STRATEGIES } from '../src/unleash-strategies/unleash-strategies.
 import { ToggleEntity } from '../src/unleash/entity/toggle.entity'
 import { MetricsService } from '../src/unleash/metrics.service'
 import { ToggleRepository } from '../src/unleash/repository/toggle-repository'
+import { UnleashContext } from '../src/unleash/unleash.context'
 import { UnleashService } from '../src/unleash/unleash.service'
+
+jest.mock('../src/unleash/unleash.context')
 
 // 09-strategy-constraints.json is an enterprise feature. can't test.
 const testSuite = [s1, s2, s3, s4, s5, s6, s7, s10]
@@ -49,14 +51,7 @@ describe('Specification test', () => {
         UnleashService,
         { provide: CUSTOM_STRATEGIES, useValue: [] },
         { provide: MetricsService, useValue: { increase: jest.fn() } },
-        {
-          provide: UnleashContext,
-          useValue: {
-            getRemoteAddress: jest.fn(),
-            getSessionId: jest.fn(),
-            getUserId: jest.fn(),
-          },
-        },
+        UnleashContext,
         ApplicationHostnameStrategy,
         DefaultStrategy,
         FlexibleRolloutStrategy,

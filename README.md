@@ -16,16 +16,17 @@
 
 # Table of contents <!-- omit in toc -->
 
-- [Usage](#usage)
+- [Setup](#setup)
   - [Synchronous configuration](#synchronous-configuration)
   - [Asynchronous configuration](#asynchronous-configuration)
-  - [Usage in controllers or providers](#usage-in-controllers-or-providers)
+- [Usage in controllers or providers](#usage-in-controllers-or-providers)
+  - [Custom context](#custom-context)
   - [Configuration](#configuration)
   - [Default strategies](#default-strategies)
   - [Custom strategies](#custom-strategies)
 - [License](#license)
 
-# Usage
+# Setup
 
 ```sh
 $ npm install --save nestjs-unleash
@@ -35,7 +36,7 @@ Import the module with `UnleashModule.forRoot(...)` or `UnleashModule.forRootAsy
 
 ## Synchronous configuration
 
-Use `UnleashModule.forRoot()`. Available ptions are described in the [UnleashModuleOptions interface](#configuration).
+Use `UnleashModule.forRoot()`. Available options are described in the [UnleashModuleOptions interface](#configuration).
 
 ```ts
 @Module({
@@ -52,7 +53,7 @@ export class MyModule {}
 
 ## Asynchronous configuration
 
-If you want to use retrieve you [Unleash options](#configuration) dynamically, use `UnleashModule.forRootAsync()`. Use `useFactory` and `inject` to import your dependencies. Example using the `ConfigService`:
+If you want to use your [Unleash options](#configuration) dynamically, use `UnleashModule.forRootAsync()`. Use `useFactory` and `inject` to import your dependencies. Example using the `ConfigService`:
 
 ```ts
 @Module({
@@ -72,7 +73,7 @@ If you want to use retrieve you [Unleash options](#configuration) dynamically, u
 export class MyModule {}
 ```
 
-## Usage in controllers or providers
+# Usage in controllers or providers
 
 In your controller use the `UnleashService` or the `@IfEnabled(...)` route decorator:
 
@@ -97,6 +98,46 @@ export class AppController {
   @Get("/foo")
   getFoo(): string {
     return "my foo";
+  }
+}
+```
+
+## Custom context
+
+The `UnleashContext` grants access to request related information like user ID or IP address.
+
+In addition, the context can be dynamically enriched with further information and subsequently used in a separate strategy:
+
+```ts
+export interface MyCustomData {
+  foo: string;
+  bar: number;
+}
+
+@Injectable()
+class SomeProvider {
+  constructor(private readonly unleash: UnleashService<MyCustomData>) {}
+
+  someMethod() {
+    return this.unleash.isEnabled("someToggleName", undefined, {
+      foo: "bar",
+      bar: 123,
+    })
+      ? "feature is active"
+      : "feature is not active";
+  }
+}
+
+// Custom strategy with custom data:
+@Injectable()
+export class MyCustomStrategy implements UnleashStrategy {
+  name = "MyCustomStrategy";
+
+  isEnabled(
+    _parameters: unknown,
+    context: UnleashContext<MyCustomData>
+  ): boolean {
+    return context.customData?.foo === "bar";
   }
 }
 ```

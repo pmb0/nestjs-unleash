@@ -5,19 +5,25 @@ import { ToggleRepository } from './repository/toggle-repository'
 import { UnleashContext } from './unleash.context'
 
 @Injectable({ scope: Scope.REQUEST })
-export class UnleashService {
+export class UnleashService<TCustomData = unknown> {
   protected readonly logger = new Logger(UnleashService.name)
 
   constructor(
     private readonly toggles: ToggleRepository,
     private readonly strategies: UnleashStrategiesService,
     private readonly metrics: MetricsService,
-    private readonly context: UnleashContext,
+    private readonly context: UnleashContext<TCustomData>,
   ) {}
 
   // eslint-disable-next-line sonarjs/cognitive-complexity
-  _isEnabled(name: string, defaultValue = false): boolean {
+  #isEnabled(
+    name: string,
+    defaultValue = false,
+    customData?: TCustomData,
+  ): boolean {
     const toggle = this.toggles.find(name)
+
+    this.context.extend(customData)
 
     if (!toggle) {
       this.logger.warn(`Toggle not found: ${name}`)
@@ -57,8 +63,12 @@ export class UnleashService {
     })
   }
 
-  isEnabled(name: string, defaultValue = false): boolean {
-    const isEnabled = this._isEnabled(name, defaultValue)
+  isEnabled(
+    name: string,
+    defaultValue = false,
+    customData?: TCustomData,
+  ): boolean {
+    const isEnabled = this.#isEnabled(name, defaultValue, customData)
     this.metrics.increase(name, isEnabled)
     return isEnabled
   }

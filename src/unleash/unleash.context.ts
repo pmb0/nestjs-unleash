@@ -9,7 +9,9 @@ const defaultUserIdFactory = (request: Request<{ id: string }>) => {
 }
 
 @Injectable({ scope: Scope.REQUEST })
-export class UnleashContext {
+export class UnleashContext<TCustomData = unknown> {
+  #customData?: TCustomData
+
   constructor(
     @Inject(REQUEST) private request: Request<{ id: string }>,
     @Inject(UNLEASH_MODULE_OPTIONS)
@@ -34,5 +36,15 @@ export class UnleashContext {
 
   getRequest<T = Request<{ id: string }>>(): T {
     return this.request as T
+  }
+
+  get customData(): TCustomData | undefined {
+    return this.#customData
+  }
+
+  extend(customData: TCustomData | undefined): UnleashContext<TCustomData> {
+    this.#customData = customData
+
+    return this
   }
 }

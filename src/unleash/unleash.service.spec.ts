@@ -1,5 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { UnleashStrategiesService, UnleashStrategy } from '..'
+import {
+  UnleashStrategiesService,
+  UnleashStrategy,
+  UNLEASH_MODULE_OPTIONS,
+} from '..'
 import { ToggleEntity } from './entity/toggle.entity'
 import { MetricsService } from './metrics.service'
 import { ToggleRepository } from './repository/toggle-repository'
@@ -71,7 +75,8 @@ describe('UnleashService', () => {
           },
         },
         { provide: MetricsService, useValue: { increase: jest.fn() } },
-        { provide: UnleashContext, useValue: {} },
+        { provide: UNLEASH_MODULE_OPTIONS, useValue: {} },
+        UnleashContext,
       ],
     }).compile()
 
@@ -85,28 +90,28 @@ describe('UnleashService', () => {
 
   describe('_isEnabled()', () => {
     it('returns the default value if the feature is not found', () => {
-      expect(service._isEnabled('foo', true)).toBe(true)
-      expect(service._isEnabled('foo', false)).toBe(false)
+      expect(service.isEnabled('foo', true)).toBe(true)
+      expect(service.isEnabled('foo', false)).toBe(false)
     })
 
     it('returns the default value if the feature exists, but is disabled', () => {
       toggles.create(createFeatureToggle({ name: 'foo', enabled: false }))
 
-      expect(service._isEnabled('foo', false)).toBe(false)
-      expect(service._isEnabled('foo', true)).toBe(true)
+      expect(service.isEnabled('foo', false)).toBe(false)
+      expect(service.isEnabled('foo', true)).toBe(true)
     })
 
     describe('returns the enabled property if no strategy is found', () => {
       test('enabled: true', () => {
         toggles.create(createFeatureToggle({ name: 'foo', enabled: true }))
 
-        expect(service._isEnabled('foo')).toBe(true)
+        expect(service.isEnabled('foo')).toBe(true)
       })
 
       test('enabled: false', () => {
         toggles.create(createFeatureToggle({ name: 'foo', enabled: false }))
 
-        expect(service._isEnabled('foo')).toBe(false)
+        expect(service.isEnabled('foo')).toBe(false)
       })
     })
 
@@ -118,7 +123,7 @@ describe('UnleashService', () => {
         }),
       )
 
-      expect(service._isEnabled('foo')).toBe(false)
+      expect(service.isEnabled('foo')).toBe(false)
     })
 
     describe('strategy testing', () => {
@@ -130,7 +135,7 @@ describe('UnleashService', () => {
           }),
         )
 
-        expect(service._isEnabled('foo')).toBe(true)
+        expect(service.isEnabled('foo')).toBe(true)
       })
 
       test('enabled: false', () => {
@@ -141,7 +146,7 @@ describe('UnleashService', () => {
           }),
         )
 
-        expect(service._isEnabled('foo')).toBe(false)
+        expect(service.isEnabled('foo')).toBe(false)
       })
 
       it('interprets exceptios as `false`', () => {
@@ -152,7 +157,7 @@ describe('UnleashService', () => {
           }),
         )
 
-        expect(service._isEnabled('foo')).toBe(false)
+        expect(service.isEnabled('foo')).toBe(false)
       })
 
       it('warns when a stale toggle is used', () => {
@@ -164,7 +169,7 @@ describe('UnleashService', () => {
           }),
         )
 
-        service._isEnabled('foo')
+        service.isEnabled('foo')
         expect(warnSpy).toHaveBeenCalledWith('Toggle is stale: foo')
       })
     })
