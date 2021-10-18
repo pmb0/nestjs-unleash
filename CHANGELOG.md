@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/pmb0/nestjs-unleash/compare/v2.1.0...v2.2.0) (2021-10-18)
+
+
+### Features
+
+* allow user defined context data ([#199](https://github.com/pmb0/nestjs-unleash/issues/199)) ([cb3b054](https://github.com/pmb0/nestjs-unleash/commit/cb3b0545ecaa441d403bcb394470e54ff499aaba))
+
 # [2.1.0](https://github.com/pmb0/nestjs-unleash/compare/v2.0.0...v2.1.0) (2021-09-16)
 
 
