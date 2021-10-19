@@ -1,5 +1,8 @@
+import ip from 'ip'
 import { createContext } from '../../testing'
 import { RemoteAddressStrategy } from './remote-address'
+
+jest.mock('@nestjs/common/services/logger.service')
 
 describe('RemoteAdressStrategy', () => {
   let strategy: RemoteAddressStrategy
@@ -44,6 +47,25 @@ describe('RemoteAdressStrategy', () => {
           createContext({ remoteAddress: '1.1.1.1' }),
         ),
       ).toBeFalsy()
+    })
+
+    test('exception ==> false', () => {
+      jest.spyOn(ip, 'cidrSubnet').mockImplementation(() => {
+        throw new Error('ohoh')
+      })
+
+      expect(
+        strategy.isEnabled(
+          { IPs: '1.2.3.4/24' },
+          createContext({ remoteAddress: '1.1.1.1' }),
+        ),
+      ).toBeFalsy()
+
+      // @ts-ignore
+      expect(strategy.logger.error).toHaveBeenCalledWith(
+        'ohoh',
+        expect.any(String),
+      )
     })
   })
 })

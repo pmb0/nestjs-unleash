@@ -14,6 +14,8 @@ class MyUpdater extends BaseUpdater {
   }
 }
 
+jest.useFakeTimers()
+
 describe('BaseUpdater', () => {
   let updater: MetricsUpdaterService
   let debugSpy: jest.SpyInstance
@@ -40,6 +42,9 @@ describe('BaseUpdater', () => {
   })
 
   test('start()', async () => {
+    const updateSpy = jest.spyOn(updater, 'update').mockImplementation()
+    expect(updateSpy).not.toHaveBeenCalled()
+
     await updater.start()
 
     expect(debugSpy).toHaveBeenCalledWith('Running MyUpdater every 14 ms ...')
@@ -49,6 +54,11 @@ describe('BaseUpdater', () => {
 
     // @ts-ignore
     expect(updater.scheduler.getInterval(MyUpdater.name)).toBeDefined()
+
+    // @ts-ignore
+    jest.advanceTimersByTime(100)
+
+    expect(updateSpy).toHaveBeenCalledTimes(8)
   })
 
   test('stop()', async () => {

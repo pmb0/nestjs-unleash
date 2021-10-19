@@ -38,8 +38,10 @@ export class RemoteAddressStrategy
         if (!isIP(range) && ip.cidrSubnet(range).contains(remoteAddress)) {
           return true
         }
-      } catch (error) {
-        this.logger.warn(error)
+      } catch (_error) {
+        const error: Error =
+          _error instanceof Error ? _error : new Error(JSON.stringify(_error))
+        this.logger.error(error.message, error.stack)
       }
     }
 
