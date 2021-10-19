@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -72,7 +73,7 @@ describe('Specification test', () => {
     testSuite.map((suite) => ({ ...suite, toString: () => suite.name })),
   )('%s', (specification) => {
     beforeEach(() => {
-      specification.state.features.forEach((feature: any) => {
+      specification.state.features.forEach((feature) => {
         toggles.create(
           // @ts-ignore
           new ToggleEntity(feature),
@@ -82,7 +83,7 @@ describe('Specification test', () => {
 
     test.each(
       // @ts-ignore
-      specification.tests.map((test: any) => ({
+      specification.tests.map((test) => ({
         ...test,
         toString: () => test.description,
       })),
@@ -92,6 +93,7 @@ describe('Specification test', () => {
       requestContext.getRemoteAddress.mockReturnValue(context.remoteAddress)
       // @ts-ignore
       requestContext.getSessionId.mockReturnValue(context.sessionId)
+      // @ts-ignore
       requestContext.getUserId.mockReturnValue(context.userId)
 
       expect(service.isEnabled(toggleName)).toBe(expectedResult)
