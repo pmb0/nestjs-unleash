@@ -3,18 +3,28 @@ export interface GetFeaturesResponse {
   features: Feature[]
 }
 
+
 export interface Feature {
   name: string
   description: string
   enabled: boolean
   strategies: Strategy[]
   createdAt: string
-  variants: any
+  variants: Variant[]
 
   type?: string
   stale?: boolean
   strategy?: string
   parameters?: Parameters
+}
+
+export interface Variant {
+  name: string
+  weight: number
+  stickiness: string
+  payload: any
+  overrides: any[]
+  weightType: string
 }
 
 export interface Strategy {

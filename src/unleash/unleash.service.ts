@@ -1,4 +1,5 @@
 import { Injectable, Logger, Scope } from '@nestjs/common'
+import { Variant } from '../unleash-client'
 import { UnleashStrategiesService } from '../unleash-strategies'
 import { MetricsService } from './metrics.service'
 import { ToggleRepository } from './repository/toggle-repository'
@@ -73,5 +74,15 @@ export class UnleashService<TCustomData = unknown> {
     const isEnabled = this.#isEnabled(name, defaultValue, customData)
     this.metrics.increase(name, isEnabled)
     return isEnabled
+  }
+
+  getVariants(name: string): Variant[] {
+    const toggle = this.toggles.find(name);
+    if (!toggle) {
+      this.logger.warn(`Toggle not found: ${name}`)
+      return [];
+    }
+
+    return toggle.variants;
   }
 }
