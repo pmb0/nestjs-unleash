@@ -10,6 +10,8 @@ import { ToggleRepository } from './repository/toggle-repository'
 import { UnleashContext } from './unleash.context'
 import { UnleashService } from './unleash.service'
 
+jest.mock('@nestjs/common/services/logger.service')
+
 type Optional<T, K extends keyof T> = Omit<T, K> & Partial<T>
 
 function createFeatureToggle(
@@ -55,7 +57,6 @@ describe('UnleashService', () => {
   let service: UnleashService
   let toggles: ToggleRepository
   let metrics: jest.Mocked<MetricsService>
-  let warnSpy: jest.SpyInstance
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -83,9 +84,6 @@ describe('UnleashService', () => {
     metrics = module.get(MetricsService)
     toggles = module.get(ToggleRepository)
     service = await module.resolve(UnleashService)
-
-    // @ts-ignore (private)
-    warnSpy = jest.spyOn(service.logger, 'warn')
   })
 
   describe('_isEnabled()', () => {
@@ -149,7 +147,7 @@ describe('UnleashService', () => {
         expect(service.isEnabled('foo')).toBe(false)
       })
 
-      it('interprets exceptios as `false`', () => {
+      it('interprets exceptions as `false`', () => {
         toggles.create(
           createFeatureToggle({
             name: 'foo',
@@ -158,6 +156,12 @@ describe('UnleashService', () => {
         )
 
         expect(service.isEnabled('foo')).toBe(false)
+
+        // @ts-ignore
+        expect(service.logger.error).toHaveBeenCalledWith(
+          'ohoh',
+          expect.any(String), // stack
+        )
       })
 
       it('warns when a stale toggle is used', () => {
@@ -170,7 +174,9 @@ describe('UnleashService', () => {
         )
 
         service.isEnabled('foo')
-        expect(warnSpy).toHaveBeenCalledWith('Toggle is stale: foo')
+
+        // @ts-ignore
+        expect(service.logger.warn).toHaveBeenCalledWith('Toggle is stale: foo')
       })
     })
 

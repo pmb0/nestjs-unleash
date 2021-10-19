@@ -56,8 +56,10 @@ export class UnleashService<TCustomData = unknown> {
           this.logger.debug(`Strategy "${data.name}" returned true`)
         }
         return isEnabled
-      } catch (error) {
-        this.logger.error((error as Error).stack)
+      } catch (_error) {
+        const error: Error =
+          _error instanceof Error ? _error : new Error(JSON.stringify(_error))
+        this.logger.error(error.message, error.stack)
         return false
       }
     })
