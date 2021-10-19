@@ -22,9 +22,14 @@ export interface Variant {
   name: string
   weight: number
   stickiness: string
-  payload: any
+  payload: Payload
   overrides: any[]
   weightType: string
+}
+
+export interface Payload {
+  type: 'string' | 'json' | 'csv'
+  value: string
 }
 
 export interface Strategy {
