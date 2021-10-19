@@ -2,5 +2,5 @@
 . "$(dirname $0)/_/husky.sh"
 
 pnpm lint
-pnpm test
+pnpm test -- --changed-since $(git merge-base HEAD master)
 pnpm test:e2e
