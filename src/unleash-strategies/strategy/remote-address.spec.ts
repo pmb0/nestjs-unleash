@@ -62,10 +62,7 @@ describe('RemoteAdressStrategy', () => {
       ).toBeFalsy()
 
       // @ts-ignore
-      expect(strategy.logger.error).toHaveBeenCalledWith(
-        'ohoh',
-        expect.any(String),
-      )
+      expect(strategy.logger.warn).toHaveBeenCalledWith('ohoh')
     })
   })
 })

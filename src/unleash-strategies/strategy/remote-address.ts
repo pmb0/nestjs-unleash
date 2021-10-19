@@ -41,7 +41,7 @@ export class RemoteAddressStrategy
       } catch (_error) {
         const error: Error =
           _error instanceof Error ? _error : new Error(JSON.stringify(_error))
-        this.logger.error(error.message, error.stack)
+        this.logger.warn(error.message)
       }
     }
 
