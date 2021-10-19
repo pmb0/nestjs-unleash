@@ -22,7 +22,7 @@ export class UnleashClientModule {
     return {
       ...options.http,
       baseURL: options.baseURL,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
       headers: {
         ...options.http?.headers,
         'UNLEASH-INSTANCEID': options.instanceId,

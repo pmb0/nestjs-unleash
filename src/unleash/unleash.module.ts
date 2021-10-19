@@ -121,7 +121,6 @@ export class UnleashModule implements OnModuleInit {
     }
   }
 
-  // eslint-disable-next-line complexity
   static forRootAsync(options: UnleashModuleAsyncOptions): DynamicModule {
     const strategiesModule = UnleashStrategiesModule.registerAsync({
       // extraProviders: options.strategies,

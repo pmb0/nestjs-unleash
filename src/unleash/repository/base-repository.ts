@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/require-await */
 // TODO: persist on disk
 
 export abstract class BaseRepository<T extends { id: string }> {
