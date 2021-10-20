@@ -8,7 +8,7 @@ export class ToggleEntity {
   description!: string
   enabled!: boolean
   strategies!: Strategy[]
-  variants!: Variant[]
+  variants?: Variant[]
   type?: string
   stale?: boolean
   strategy?: string

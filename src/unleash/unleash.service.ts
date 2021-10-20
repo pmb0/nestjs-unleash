@@ -76,7 +76,7 @@ export class UnleashService<TCustomData = unknown> {
     return isEnabled
   }
 
-  getVariants(name: string): Variant[] {
+  getVariants(name: string): Variant[] | undefined {
     const toggle = this.toggles.find(name);
     if (!toggle) {
       this.logger.warn(`Toggle not found: ${name}`)
