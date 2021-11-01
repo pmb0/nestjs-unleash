@@ -870,9 +870,9 @@
     uuid "8.3.2"
 
 "@nestjs/config@^1.0.0":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/config/-/config-1.0.2.tgz#2eec40f7c4c09fcbe3ece1dc5025e2145eb275f1"
-  integrity sha512-2q8CcI4UszJ110uDacZe09sj2EJzQztqEOvPXoYaoXoeWWMEwIovAF7cyiBpJWJS+LikpbZyHqtA6p3//mSiOg==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/config/-/config-1.0.3.tgz#d2f6a7a66493d1233ef230fd367188b8689c41f4"
+  integrity sha512-cVQj3Q1idvdnE9ellOoBJQByJUWWKAM3E/pGvRbh1h42z0135iRAR/vIqT4iC69KXp6UfX01F/rvcbdnBpPdlg==
   dependencies:
     dotenv "10.0.0"
     dotenv-expand "5.1.0"
