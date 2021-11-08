@@ -892,9 +892,9 @@
     fastq "^1.6.0"
 
 "@npmcli/arborist@*", "@npmcli/arborist@^4.0.0":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@npmcli/arborist/-/arborist-4.0.3.tgz#5e1632192f970c3a4e43c4699ad875089418bed0"
-  integrity sha512-gFz/dNJtpv2bYXlupcUpEaWlFDRUNmvVnQNbE6dY4ild6beZ2SkG4R5/CM4GZZwj9HD2TyfGjO350Ja+xlLzuA==
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@npmcli/arborist/-/arborist-4.0.4.tgz#a532a7cc430ccbd87c0595a8828f9614f29d2dac"
+  integrity sha512-5hRkiHF9zu62z6a7CJqhVG5CFUVnbYqvrrcxxEmhxFgyH2ovICyULOrj7nF4VBlfzp7OPu/rveV2ts9iYrn74g==
   dependencies:
     "@isaacs/string-locale-compare" "^1.0.1"
     "@npmcli/installed-package-contents" "^1.0.7"
@@ -935,9 +935,9 @@
   integrity sha512-3BGrt6FLjqM6br5AhWRKTr3u5GIVkjRYeAFrMp3HjnfICrg4xOrVRwFavKT6tsp++bq5dluL5t8ME/Nha/6c1Q==
 
 "@npmcli/config@*":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@npmcli/config/-/config-2.3.0.tgz#364fbe942037e562a832a113206e14ccb651f7bc"
-  integrity sha512-yjiC1xv7KTmUTqfRwN2ZL7BHV160ctGF0fLXmKkkMXj40UOvBe45Apwvt5JsFRtXSoHkUYy1ouzscziuWNzklg==
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@npmcli/config/-/config-2.3.1.tgz#41d80ce272831461b5cb158afa110525d4be0fed"
+  integrity sha512-F/8R/Zqun8682TgaCILUNoaVfd1LVaYZ/jcVt9KWzfKpzcPus1zEApAl54PqVqVJbNq6f01QTDQHD6L/n56BXw==
   dependencies:
     ini "^2.0.0"
     mkdirp-infer-owner "^2.0.0"
@@ -1234,9 +1234,9 @@
     url-join "^4.0.0"
 
 "@semantic-release/npm@^8.0.0":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-8.0.2.tgz#1dc285e4250380bc3259735bf843738c7151f275"
-  integrity sha512-ky7QczJGExZJnS8wjdhag1EV+T3u/DbcxqpBQOIZu1fcJYKsGxr2uK9guc/H2cg0yFCto5atbuZm2sZmaG5qxg==
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-8.0.3.tgz#69378ce529bbd263aa8fc899b2d0f874114e0302"
+  integrity sha512-Qbg7x/O1t3sJqsv2+U0AL4Utgi/ymlCiUdt67Ftz9HL9N8aDML4t2tE0T9MBaYdqwD976hz57DqHHXKVppUBoA==
   dependencies:
     "@semantic-release/error" "^3.0.0"
     aggregate-error "^3.0.0"
@@ -2082,9 +2082,9 @@ asap@^2.0.0:
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
 
 asn1@~0.2.3:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/asn1/-/asn1-0.2.4.tgz#8d2475dfab553bb33e77b54e59e880bb8ce23136"
-  integrity sha512-jxwzQpLQjSmWXgwaCZE9Nz+glAG01yF1QnWgbhGwHI5A6FRIEY6IVqtHhIepHqI7/kyEyQEagBC5mBEFlIYvdg==
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/asn1/-/asn1-0.2.6.tgz#0d3a7bb6e64e02a90c0303b31f292868ea09a08d"
+  integrity sha512-ix/FxPn0MDjeyJ7i/yoHGFt/EX6LyNbxSEhPPXODPL+KB0VPk86UYfL0lMdy+KCnv+fmvIzySwaK5COwqVbWTQ==
   dependencies:
     safer-buffer "~2.1.0"
 
@@ -3713,9 +3713,9 @@ extsprintf@1.3.0:
   integrity sha1-lpGEQOMEGnpBT4xS48V06zw+HgU=
 
 extsprintf@^1.2.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
-  integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.1.tgz#8d172c064867f235c0c84a596806d279bf4bcc07"
+  integrity sha512-Wrk35e8ydCKDj/ArClo1VrPVmN8zph5V4AtHwIuHhvMXsKf73UT3BOD+azBIW+3wOJ4FhEH7zyaJCFvChjYvMA==
 
 fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
@@ -6244,9 +6244,9 @@ node-fetch@^2.6.1:
     whatwg-url "^5.0.0"
 
 node-gyp@*, node-gyp@^8.2.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-8.3.0.tgz#ebc36a146d45095e1c6af6ccb0e47d1c8fc3fe69"
-  integrity sha512-e+vmKyTiybKgrmvs4M2REFKCnOd+NcrAAnn99Yko6NQA+zZdMlRvbIUHojfsHrSQ1CddLgZnHicnEVgDHziJzA==
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-8.4.0.tgz#6e1112b10617f0f8559c64b3f737e8109e5a8338"
+  integrity sha512-Bi/oCm5bH6F+FmzfUxJpPaxMEyIhszULGR3TprmTeku8/dMFcdTcypk120NeZqEt54r1BrgEKtm2jJiuIKE28Q==
   dependencies:
     env-paths "^2.2.0"
     glob "^7.1.4"
