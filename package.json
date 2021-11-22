@@ -52,8 +52,8 @@
     "rxjs": "^7.3.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^14.0.0",
-    "@commitlint/config-conventional": "^14.0.0",
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
     "@heise/eslint-config": "^20.0.7",
     "@nestjs/axios": "^0.0.3",
     "@nestjs/cli": "^8.1.0",
