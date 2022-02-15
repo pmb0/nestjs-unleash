@@ -62,7 +62,7 @@ export class UnleashMockController {
               },
             },
           ],
-          variants: null,
+          variants: [],
           createdAt: '2018-05-04T19:12:09.873Z',
         },
       ],

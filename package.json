@@ -1,6 +1,6 @@
 {
   "name": "@precise/nestjs-unleash",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "Unleash integration for NestJS",
   "author": "Philipp Busse",
   "main": "dist/src/index.js",
@@ -26,7 +26,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start:dev": "nodemon  --exec ts-node --files e2e/src/main.ts",
     "lint": "eslint --cache .",
-    "_postinstall": "is-ci || husky install",
+    "postinstall": "is-ci || husky install",
     "prepublish": "pinst --disable",
     "postpublish": "pinst --enable",
     "test": "jest",
