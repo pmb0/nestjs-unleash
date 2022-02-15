@@ -1,11 +1,11 @@
-import { Inject, Injectable, Scope } from '@nestjs/common'
+import { Inject, Injectable, Optional, Scope } from '@nestjs/common'
 import { REQUEST } from '@nestjs/core'
 import { UnleashModuleOptions } from '.'
 import { ExpressSession, FastifySession, Request } from '../unleash-strategies'
 import { UNLEASH_MODULE_OPTIONS } from './unleash.constants'
 
 const defaultUserIdFactory = (request: Request<{ id: string }>) => {
-  return request.user?.id?.toString()
+  return request?.user?.id?.toString()
 }
 
 @Injectable({ scope: Scope.REQUEST })
@@ -13,7 +13,7 @@ export class UnleashContext<TCustomData = unknown> {
   #customData?: TCustomData
 
   constructor(
-    @Inject(REQUEST) private request: Request<{ id: string }>,
+    @Inject(REQUEST) @Optional() private request: Request<{ id: string }>,
     @Inject(UNLEASH_MODULE_OPTIONS)
     private readonly options: UnleashModuleOptions,
   ) {}
@@ -24,13 +24,13 @@ export class UnleashContext<TCustomData = unknown> {
   }
 
   getRemoteAddress(): string | undefined {
-    return this.request.ip
+    return this.request?.ip
   }
 
   getSessionId(): string | undefined {
     return (
-      (this.request.session as ExpressSession | undefined)?.id ||
-      (this.request.session as FastifySession | undefined)?.sessionId
+      (this.request?.session as ExpressSession | undefined)?.id ||
+      (this.request?.session as FastifySession | undefined)?.sessionId
     )
   }
 
