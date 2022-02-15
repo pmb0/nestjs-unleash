@@ -1,11 +1,10 @@
-import { Injectable, Logger, Scope } from '@nestjs/common'
+import { Logger } from '@nestjs/common'
 import { Variant } from '../unleash-client'
 import { UnleashStrategiesService } from '../unleash-strategies'
 import { MetricsService } from './metrics.service'
 import { ToggleRepository } from './repository/toggle-repository'
 import { UnleashContext } from './unleash.context'
 
-@Injectable({ scope: Scope.REQUEST })
 export class UnleashService<TCustomData = unknown> {
   protected readonly logger = new Logger(UnleashService.name)
 
@@ -77,12 +76,12 @@ export class UnleashService<TCustomData = unknown> {
   }
 
   getVariants(name: string): Variant[] | undefined {
-    const toggle = this.toggles.find(name);
+    const toggle = this.toggles.find(name)
     if (!toggle) {
       this.logger.warn(`Toggle not found: ${name}`)
-      return [];
+      return []
     }
 
-    return toggle.variants;
+    return toggle.variants
   }
 }
