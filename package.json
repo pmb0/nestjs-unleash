@@ -1,6 +1,6 @@
 {
   "name": "@precise/nestjs-unleash",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "Unleash integration for NestJS",
   "author": "Philipp Busse",
   "main": "dist/src/index.js",

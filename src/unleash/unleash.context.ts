@@ -1,7 +1,9 @@
-import { Inject } from '@nestjs/common'
+import { Inject, Injectable } from '@nestjs/common'
 import { UnleashModuleOptions } from '.'
 import { Request } from '../unleash-strategies'
 import { UNLEASH_MODULE_OPTIONS } from './unleash.constants'
+
+@Injectable()
 export class UnleashContext<TCustomData = unknown> {
   #customData?: TCustomData
 

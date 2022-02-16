@@ -1,10 +1,11 @@
-import { Logger } from '@nestjs/common'
+import { Injectable, Logger } from '@nestjs/common'
 import { Variant } from '../unleash-client'
 import { UnleashStrategiesService } from '../unleash-strategies'
 import { MetricsService } from './metrics.service'
 import { ToggleRepository } from './repository/toggle-repository'
 import { UnleashContext } from './unleash.context'
 
+@Injectable()
 export class UnleashService<TCustomData = unknown> {
   protected readonly logger = new Logger(UnleashService.name)
 
