@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/pmb0/nestjs-unleash/compare/v2.2.1...v2.2.2) (2022-05-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ip to v1.1.7 ([ec046f5](https://github.com/pmb0/nestjs-unleash/commit/ec046f57510132c40978e05e692f82c138cd63a9))
+
 ## [2.2.1](https://github.com/pmb0/nestjs-unleash/compare/v2.2.0...v2.2.1) (2022-05-10)
 
 
