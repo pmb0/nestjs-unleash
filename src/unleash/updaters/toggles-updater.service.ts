@@ -32,7 +32,8 @@ export class TogglesUpdaterService extends BaseUpdater {
     } catch (error) {
       if (
         this.isAxiosError(error) &&
-        error.response?.status === HttpStatus.NOT_FOUND
+        error.response?.status === HttpStatus.NOT_FOUND &&
+        error.config
       ) {
         const { url, baseURL } = error.config
 
