@@ -1,3 +1,10 @@
+## [2.2.4](https://github.com/pmb0/nestjs-unleash/compare/v2.2.3...v2.2.4) (2023-02-14)
+
+
+### Bug Fixes
+
+* support nestjs 9 ([#446](https://github.com/pmb0/nestjs-unleash/issues/446)) ([5ab113e](https://github.com/pmb0/nestjs-unleash/commit/5ab113ec3079f5d4b2ea4ee40f16d3eb26271109))
+
 ## [2.2.3](https://github.com/pmb0/nestjs-unleash/compare/v2.2.2...v2.2.3) (2022-05-11)
 
 
