@@ -61,7 +61,7 @@
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "9.3.9",
     "@nestjs/platform-express": "^9.0.0",
-    "@nestjs/schedule": "2.2.0",
+    "@nestjs/schedule": "2.2.1",
     "@nestjs/schematics": "^9.0.3",
     "@nestjs/testing": "^9.0.0",
     "@semantic-release/changelog": "^6.0.0",
