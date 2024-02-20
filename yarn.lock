@@ -1800,9 +1800,9 @@
     "@types/node" "*"
 
 "@types/ip@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@types/ip/-/ip-1.1.0.tgz#aec4f5bfd49e4a4c53b590d88c36eb078827a7c0"
-  integrity sha512-dwNe8gOoF70VdL6WJBwVHtQmAX4RMd62M+mAB9HQFjG1/qiCLM/meRy95Pd14FYBbEDwCq7jgJs89cHpLBu4HQ==
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@types/ip/-/ip-1.1.3.tgz#5d8634b3514a51768adda5e17c91a11cdb2e5247"
+  integrity sha512-64waoJgkXFTYnCYDUWgSATJ/dXEBanVkaP5d4Sbk7P6U7cTTMhxVyROTckc6JKdwCrgnAjZMn0k3177aQxtDEA==
   dependencies:
     "@types/node" "*"
 
@@ -1859,9 +1859,11 @@
   integrity sha512-Fk89Nt3pqOPBbv1fTrD0nN+bqPu0pens6qCmdbGpRKg19b/pS0dsQQxaFIvw6swaaK+hcvySDzes4Z35XMV9mg==
 
 "@types/node@*":
-  version "18.15.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.11.tgz#b3b790f09cb1696cffcec605de025b088fa4225f"
-  integrity sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==
+  version "20.11.19"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.19.tgz#b466de054e9cb5b3831bee38938de64ac7f81195"
+  integrity sha512-7xMnVEcZFu0DikYjWOlRq7NTPETrm7teqUT2WkQjrTIkEgUyyGdWsj/Zg8bEJt5TNklzbPD1X3fqfsHw3SpapQ==
+  dependencies:
+    undici-types "~5.26.4"
 
 "@types/node@^14.14.10":
   version "14.18.48"
@@ -4750,9 +4752,9 @@ ip-regex@^4.1.0:
   integrity sha512-B9ZWJxHHOHUhUjCPrMpLD4xEq35bUTClHM1S6CBU5ixQnkZmwipwgc96vAd7AAGM9TGHvJR+Uss+/Ak6UphK+Q==
 
 ip@^1.1.5:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.8.tgz#ae05948f6b075435ed3307acce04629da8cdbf48"
-  integrity sha512-PuExPYUiu6qMBQb4l06ecm6T6ujzhmh+MeJcW9wa89PoAz5pvd4zPgN5WJV104mb6S2T1AwNIAaB70JNrLQWhg==
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.9.tgz#8dfbcc99a754d07f425310b86a99546b1151e396"
+  integrity sha512-cyRxvOEpNHNtchU3Ln9KC/auJgup87llfQpQ+t5ghoC/UhL16SWzbueiCsdTnWmqAWl7LadfuwhlqmtOaqMHdQ==
 
 ip@^2.0.0:
   version "2.0.0"
@@ -8452,6 +8454,11 @@ undefsafe@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/undefsafe/-/undefsafe-2.0.5.tgz#38733b9327bdcd226db889fb723a6efd162e6e2c"
   integrity sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==
+
+undici-types@~5.26.4:
+  version "5.26.5"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
+  integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
 
 unique-filename@^2.0.0:
   version "2.0.1"
