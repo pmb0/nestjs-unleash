@@ -48,7 +48,7 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/schedule": "^2.1.0",
     "axios": "^1.0.1",
-    "reflect-metadata": "^0.1.12",
+    "reflect-metadata": "^0.2.0",
     "rxjs": "^7.3.0"
   },
   "devDependencies": {
@@ -86,7 +86,7 @@
     "mockdate": "^3.0.2",
     "nodemon": "^2.0.13",
     "pinst": "^3.0.0",
-    "reflect-metadata": "^0.1.12",
+    "reflect-metadata": "^0.2.0",
     "rimraf": "^4.0.0",
     "rxjs": "^7.3.0",
     "semantic-release": "^19.0.0",
